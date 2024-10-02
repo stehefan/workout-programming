@@ -25,3 +25,18 @@ body {
     text-wrap: balance;
   }
 }
+
+h1 {
+  font-size: theme('fontSize.3xl');
+  font-weight: bold;
+}
+
+h2 {
+  font-size: theme('fontSize.2xl');
+  font-weight: bold;
+}
+
+h3 {
+  font-size: theme('fontSize.xl');
+  font-weight: bold;
+}
