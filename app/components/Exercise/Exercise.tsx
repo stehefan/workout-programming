@@ -52,7 +52,7 @@ export default function Exercise(props: ExerciseProps) {
             {display && (
                 <div
                     className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
-                    <button onClick={() => setDisplay(!display)}>close</button>
+                    <button className='font-bold mb-6 text-xl' onClick={() => setDisplay(!display)}>✖︎ close</button>
                     <VideoPlayer videoUrl={props.exercise.videoUrl}/>
                 </div>
             )}
