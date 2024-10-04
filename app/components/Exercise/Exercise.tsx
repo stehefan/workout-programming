@@ -18,7 +18,7 @@ export default function Exercise(props: ExerciseProps) {
     };
 
     return (
-        <div className={'w-96 flex flex-col'}>
+        <div className={'w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'} onClick={() => setDisplay(!display)}>
                 <Image
                     src={props.exercise.previewImageUrl}
@@ -32,7 +32,7 @@ export default function Exercise(props: ExerciseProps) {
                     ⏵
                 </span>
             </div>
-            <div className='flex flex-col gap-2 p-2 h-full justify-between rounded-b-lg border border-t-0 border-neutral-200 dark:border-neutral-800'>
+            <div className='flex flex-col gap-2 p-2 h-full justify-between'>
                 <div className='mb-4'>
                     <div className='font-bold text-xl '>
                         {props.exercise.exerciseName}
@@ -42,7 +42,7 @@ export default function Exercise(props: ExerciseProps) {
                     </div>
                 </div>
                 <textarea
-                    className='resize-none p-2 bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 text-neutral-800 focus:outline-none'
+                    className='resize-none p-2 bg-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 text-neutral-600 focus:outline-none'
                     value={textArea}
                     onChange={handleChange}
                     placeholder='Your notes'
