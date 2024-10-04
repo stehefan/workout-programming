@@ -11,12 +11,11 @@ export default function Exercise() {
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTextArea(event.target.value);
     };
-// Photo by <a href="https://unsplash.com/@srosinger3997?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Samantha Gades</a> on <a href="https://unsplash.com/photos/woman-holding-dumbbell-in-white-crew-neck-t-shirt-k95uqdEe8R4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
     return (
         <div className={'w-96 flex flex-col rounded-lg border border-neutral-700'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'}>
                 <Image
-                    src={'https://images.unsplash.com/photo-1537289150563-b7f10eee353b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxhbGx8MTE5fHx8fHx8fHwxNzI4MDM4MjU0fA&ixlib=rb-4.0.3&q=80&w=1080'}
+                    src={`https://picsum.photos/1080/721?random=${Math.random().toString(36).substring(7)}`}
                     alt={'Woman holding dumbbell in white crew neck t-shirt'}
                     width={1080}
                     height={721}
