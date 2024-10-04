@@ -1,0 +1,269 @@
+[
+  {
+    "name": "Squat & push",
+    "sections": [
+      {
+        "name": "Breathing 1 Runde",
+        "exercises": [
+          {
+            "exerciseName": "Pelvis Tilts",
+            "measureUnit": "reps",
+            "measureCount": "∞",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Xk9pL7Qs",
+            "note": "as many as you need um vom Kopf in den Koerper zu kommen"
+          },
+          {
+            "exerciseName": "Rolle",
+            "measureUnit": "reps",
+            "measureCount": "15-20",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Zt6mN3Rw"
+          }
+        ]
+      },
+      {
+        "name": "Positioning & Warm up 1-2 Runden",
+        "exercises": [
+          {
+            "exerciseName": "Bear plank serratus push ups",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Yb2cF8Hj",
+            "note": "One hand elevated"
+          },
+          {
+            "exerciseName": "Kneeling lean backs",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Uv4gK9Pm"
+          },
+          {
+            "exerciseName": "Vierfuessler Haende an Wand pull ups",
+            "measureUnit": "reps",
+            "measureCount": "10-12",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Wq1sD5Ln"
+          }
+        ]
+      },
+      {
+        "name": "Dynamics 2 Runden",
+        "exercises": [
+          {
+            "exerciseName": "half kneeling to knee drive (jump)",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Jh7tB3Vf"
+          },
+          {
+            "exerciseName": "Drop into push up",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Gn5xM2Ck"
+          },
+          {
+            "exerciseName": "Split squat low jumps yielding",
+            "measureUnit": "reps",
+            "measureCount": "10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Qr8zS6Bm"
+          }
+        ]
+      },
+      {
+        "name": "Mains 4-5 Runden",
+        "exercises": [
+          {
+            "exerciseName": "Front squat",
+            "measureUnit": "reps",
+            "measureCount": "5-6",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Lp3fH9Tj",
+            "note": " Pauli style & schwer"
+          },
+          {
+            "exerciseName": "Sit to jump",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Nw6yA4Rd"
+          },
+          {
+            "exerciseName": "Reziprok chest press KH",
+            "measureUnit": "reps",
+            "measureCount": "8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Fs9cE1Km",
+            "note": "Anzahl pro Seite"
+          }
+        ]
+      },
+      {
+        "name": "Accessories 2-3 Runden",
+        "exercises": [
+          {
+            "exerciseName": "Ausfallschritt Kombi",
+            "measureUnit": "reps",
+            "measureCount": "6",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Vb7hJ2Xn",
+            "note": "Oberkörper Rotation mit Gewicht"
+          },
+          {
+            "exerciseName": "Seated Windmill OHP",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Zk4mG8Wy"
+          },
+          {
+            "exerciseName": "Renegade row kneeling iso hamstring",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Ht1pL6Bq",
+            "note": "Eine Hand erhoeht; Anzahl pro Seite"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hinge & pull",
+    "sections": [
+      {
+        "name": "Breathing 1 Runde",
+        "exercises": [
+          {
+            "exerciseName": "pelvis tilts",
+            "measureUnit": "reps",
+            "measureCount": "∞",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Rj3nS9Fm",
+            "note": "as many as you need um vom Kopf in den Koerper zu kommen"
+          },
+          {
+            "exerciseName": "Rolle slow mo",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Kd5wC2Nh"
+          }
+        ]
+      },
+      {
+        "name": "Positioning & Warm up 1-2 Runden",
+        "exercises": [
+          {
+            "exerciseName": "hamstring bridge FF auf BR iso",
+            "measureUnit": "seconds",
+            "measureCount": "30",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Tb8vM4Qj"
+          },
+          {
+            "exerciseName": "heel to forefoot hamstring bridge dynamisch",
+            "measureUnit": "reps",
+            "measureCount": "15",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Gx2fP7Yw"
+          },
+          {
+            "exerciseName": "kneeling hip hinge",
+            "measureUnit": "reps",
+            "measureCount": "12-15",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Lm9sD3Hb"
+          },
+          {
+            "exerciseName": "Seitstuetz",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Wc6rJ1Vn",
+            "note": " ein Fuss an Wand hip extension; Anzahl der Wiederholungen für Atemzüge"
+          }
+        ]
+      },
+      {
+        "name": "Dynamics 2 Runden",
+        "exercises": [
+          {
+            "exerciseName": "power step up",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Qs7hF5Bk"
+          },
+          {
+            "exerciseName": "Vierfuessler jump an Wand mit Haenden",
+            "measureUnit": "reps",
+            "measureCount": "12-15",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Xn4tM8Lp"
+          },
+          {
+            "exerciseName": "Kickstance hinge into wall ball",
+            "measureUnit": "reps",
+            "measureCount": "10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Jb2cR9Wy"
+          }
+        ]
+      },
+      {
+        "name": "Mains 4-5 Runden",
+        "exercises": [
+          {
+            "exerciseName": "Tbar kickstance hinge",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Zf1nH6Gk",
+            "note": "schwer"
+          },
+          {
+            "exerciseName": "Low seated UL pull down mit festhalten",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=Nq5sT3Vx",
+            "note": "schwer"
+          }
+        ]
+      },
+      {
+        "name": "Accessories 2-3 Runden",
+        "exercises": [
+          {
+            "exerciseName": "Hinge zu clean and press",
+            "measureUnit": "reps",
+            "measureCount": "8-10",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=3NTVxs5q"
+          },
+          {
+            "exerciseName": "Faultier row",
+            "measureUnit": "reps",
+            "measureCount": "12",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=qTVsN35x",
+            "note": "immer linkes Bein aufgestellt, auf beiden Seiten durchführen"
+          },
+          {
+            "exerciseName": "Triceps hold Klappmesser",
+            "measureUnit": "reps",
+            "measureCount": "6-8",
+            "videoUrl": "https://www.youtube.com/watch?v=5mGuCdlCcNM",
+            "previewImageUrl": "https://picsum.photos/1080/721?random=s3xTN5Vq"
+          }
+        ]
+      }
+    ]
+  }
+]

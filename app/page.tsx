@@ -1,43 +1,28 @@
 import Exercise from "./components/Exercise/Exercise";
+import exercisesData from '../data/exercises.json';
+import {ExerciseProgram} from "@/types/Exercise";
 
 export default function Home() {
-    return (
-        <div
-            className="grid grid-rows-[20px_1fr_20px] min-h-screen gap-16 p-6">
-            <section>
-                <h2>Squat & Push</h2>
-                <div>
-                    <h3 className='mt-4'>Breathing</h3>
-                    <div className='flex flex-wrap gap-4'>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                    </div>
-                </div>
-                <div>
-                    <h3 className='mt-4'>Breathing</h3>
-                    <div className='flex flex-wrap gap-4'>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                    </div>
-                </div>
-                <div>
-                    <h3 className='mt-4'>Breathing</h3>
-                    <div className='flex flex-wrap gap-4'>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                        <Exercise/>
-                    </div>
-                </div>
-            </section>
+    const exercises: ExerciseProgram = exercisesData;
 
+    return (
+        <div className='p-6'>
+            {exercises.map((workout, index) => (
+                <section key={index} className='mt-4'>
+                    <h2 className='mt-4'>{workout.name}</h2>
+                    {workout.sections.map((section, sectionIndex) => (
+                        <div key={sectionIndex}>
+                            <h3 className='mt-4 mb-2'>{section.name}</h3>
+                            <div className='flex flex-wrap gap-4'>
+                                {section.exercises.map((exercise, exerciseIndex) => (
+                                    <Exercise key={exerciseIndex} exercise={exercise}/>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            ))
+            }
         </div>
     );
 }
