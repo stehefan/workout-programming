@@ -1,8 +1,8 @@
 'use client';
 
-import ReactPlayer from 'react-player/lazy'
 import React, {useState} from "react";
 import Image from "next/image";
+import VideoPlayer from "@/app/components/VideoPlayer/VideoPlayer";
 
 const RANDOM_NOTES = [
     undefined,
@@ -43,6 +43,8 @@ const RANDOM_EXERCISE_NAMES = [
     'Faultier Row',
     'Triceps Klappmesser',
 ]
+
+
 
 export default function Exercise() {
     const randomNote = RANDOM_NOTES[Math.floor(Math.random() * RANDOM_NOTES.length)];
@@ -95,20 +97,7 @@ export default function Exercise() {
                 <div
                     className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
                     <button onClick={() => setDisplay(!display)}>close</button>
-                    <ReactPlayer
-                        url='https://www.youtube.com/watch?v=5mGuCdlCcNM'
-                        width={'75%'}
-                        height={'75%'}
-                        playsinline={true}
-                        controls={true}
-                        config={{
-                            youtube: {
-                                playerVars: {
-                                    cc_lang_pref: 'de',
-                                    cc_load_policy: 1
-                                }
-                            }
-                        }}/>
+                    <VideoPlayer videoUrl='https://www.youtube.com/watch?v=5mGuCdlCcNM'/>
                 </div>
             )}
         </div>);
