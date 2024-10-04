@@ -18,21 +18,21 @@ export default function Exercise(props: ExerciseProps) {
     };
 
     return (
-        <div className={'w-96 flex flex-col rounded-lg border border-neutral-200 dark:border-neutral-800'}>
+        <div className={'w-96 flex flex-col'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'} onClick={() => setDisplay(!display)}>
                 <Image
                     src={props.exercise.previewImageUrl}
                     alt={'Woman holding dumbbell in white crew neck t-shirt'}
                     width={1080}
                     height={721}
-                    className={'rounded-t-lg object-cover w-96 h-52'}/>
+                    className={'rounded-t-lg object-cover w-96 h-auto'}/>
                 <span
                     className='w-16 h-16 text-5xl absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-white inline-flex justify-center items-center rounded-full bg-neutral-800/75'
                 >
                     ⏵
                 </span>
             </div>
-            <div className='flex flex-col gap-2 p-2 h-full justify-between'>
+            <div className='flex flex-col gap-2 p-2 h-full justify-between rounded-b-lg border border-t-0 border-neutral-200 dark:border-neutral-800'>
                 <div className='mb-4'>
                     <div className='font-bold text-xl '>
                         {props.exercise.exerciseName}
