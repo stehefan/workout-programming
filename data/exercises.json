@@ -3,7 +3,8 @@
     "name": "Squat & push",
     "sections": [
       {
-        "name": "Breathing 1 Runde",
+        "name": "Breathing",
+        "roundCount": 1,
         "exercises": [
           {
             "exerciseName": "Pelvis Tilts",
@@ -23,7 +24,8 @@
         ]
       },
       {
-        "name": "Positioning & Warm up 1-2 Runden",
+        "name": "Positioning & Warm Up",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "Bear plank serratus push ups",
@@ -50,7 +52,8 @@
         ]
       },
       {
-        "name": "Dynamics 2 Runden",
+        "name": "Dynamics",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "half kneeling to knee drive (jump)",
@@ -76,7 +79,8 @@
         ]
       },
       {
-        "name": "Mains 4-5 Runden",
+        "name": "Mains",
+        "roundCount": 4,
         "exercises": [
           {
             "exerciseName": "Front squat",
@@ -104,7 +108,8 @@
         ]
       },
       {
-        "name": "Accessories 2-3 Runden",
+        "name": "Accessories",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "Ausfallschritt Kombi",
@@ -137,7 +142,8 @@
     "name": "Hinge & pull",
     "sections": [
       {
-        "name": "Breathing 1 Runde",
+        "name": "Breathing",
+        "roundCount": 1,
         "exercises": [
           {
             "exerciseName": "pelvis tilts",
@@ -157,7 +163,8 @@
         ]
       },
       {
-        "name": "Positioning & Warm up 1-2 Runden",
+        "name": "Positioning & Warm ",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "hamstring bridge FF auf BR iso",
@@ -191,7 +198,8 @@
         ]
       },
       {
-        "name": "Dynamics 2 Runden",
+        "name": "Dynamics",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "power step up",
@@ -217,7 +225,8 @@
         ]
       },
       {
-        "name": "Mains 4-5 Runden",
+        "name": "Mains",
+        "roundCount": 4,
         "exercises": [
           {
             "exerciseName": "Tbar kickstance hinge",
@@ -238,7 +247,8 @@
         ]
       },
       {
-        "name": "Accessories 2-3 Runden",
+        "name": "Accessories",
+        "roundCount": 2,
         "exercises": [
           {
             "exerciseName": "Hinge zu clean and press",

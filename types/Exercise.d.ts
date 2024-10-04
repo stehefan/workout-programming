@@ -9,6 +9,7 @@ type ExerciseEntry = {
 
 type Section = {
     name: string;
+    roundCount: number;
     exercises: ExerciseEntry[];
 };
 
