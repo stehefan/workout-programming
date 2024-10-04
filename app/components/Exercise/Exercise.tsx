@@ -18,7 +18,7 @@ export default function Exercise(props: ExerciseProps) {
     };
 
     return (
-        <div className={'w-96 flex flex-col rounded-lg border border-neutral-700'}>
+        <div className={'w-96 flex flex-col rounded-lg border border-neutral-200 dark:border-neutral-800'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'} onClick={() => setDisplay(!display)}>
                 <Image
                     src={props.exercise.previewImageUrl}
@@ -42,7 +42,7 @@ export default function Exercise(props: ExerciseProps) {
                     </div>
                 </div>
                 <textarea
-                    className='resize-none p-2 bg-slate-100 dark:bg-neutral-900 dark:text-slate-100 text-neutral-800 focus:outline-none'
+                    className='resize-none p-2 bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 text-neutral-800 focus:outline-none'
                     value={textArea}
                     onChange={handleChange}
                     placeholder='Your notes'
