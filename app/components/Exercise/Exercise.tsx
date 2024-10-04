@@ -42,7 +42,7 @@ export default function Exercise(props: ExerciseProps) {
                     </div>
                 </div>
                 <textarea
-                    className='resize-none p-2 bg-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 text-neutral-600 focus:outline-none'
+                    className='resize-none p-2 bg-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 text-neutral-600 focus:outline-none rounded-b-lg'
                     value={textArea}
                     onChange={handleChange}
                     placeholder='Your notes'
