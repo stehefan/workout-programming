@@ -4,7 +4,6 @@ export default function Home() {
     return (
         <div
             className="grid grid-rows-[20px_1fr_20px] min-h-screen gap-16 p-6">
-            <h1>Programming</h1>
             <section>
                 <h2>Squat & Push</h2>
                 <div>
