@@ -1,6 +1,8 @@
+type MeasureUnit = 'reps' | 'seconds';
+
 type ExerciseEntry = {
     exerciseName: string;
-    measureUnit: string;
+    measureUnit: MeasureUnit;
     measureCount: string;
     videoUrl: string;
     previewImageUrl: string;
