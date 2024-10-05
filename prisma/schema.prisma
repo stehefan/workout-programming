@@ -1,0 +1,49 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum MeasureUnit {
+  reps
+  seconds
+}
+
+model Exercise {
+  id              Int         @id @default(autoincrement())
+  exerciseName    String
+  measureUnit     MeasureUnit
+  measureCount    String
+  videoUrl        String
+  previewImageUrl String
+  note            String?
+  section         Section     @relation(fields: [sectionId], references: [id])
+  sectionId       Int
+}
+
+model Section {
+  id         Int        @id @default(autoincrement())
+  name       String
+  roundCount Int
+  exercises  Exercise[]
+  workout    Workout    @relation(fields: [workoutId], references: [id])
+  workoutId  Int
+}
+
+model Workout {
+  id        Int       @id @default(autoincrement())
+  name      String
+  sections  Section[]
+  program   Program   @relation(fields: [programId], references: [id])
+  programId Int
+}
+
+model Program {
+  id       Int       @id @default(autoincrement())
+  workouts Workout[]
+}
