@@ -33,15 +33,20 @@ export default function Exercise(props: ExerciseProps) {
                         className={'rounded-t-lg object-cover w-96 h-auto'}/>
                 ) : (
                     <div className='w-96 h-auto'>
-                        <PreviewImagePlaceholder />
+                        <PreviewImagePlaceholder/>
                     </div>
                 )}
                 {props.exercise.videoUrl && (
                     <span
                         className='w-16 h-16 text-5xl absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-white inline-flex justify-center items-center rounded-full bg-neutral-800/75'
                     >
-                    ⏵
-                </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                             className="size-6">
+                            <path fillRule="evenodd"
+                                  d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
+                                  clipRule="evenodd"/>
+                        </svg>
+                    </span>
                 )}
             </div>
             <div className='flex flex-col gap-2 p-2 h-full justify-between'>
