@@ -5,8 +5,8 @@ type ExerciseEntry = {
     exerciseName: string;
     measureUnit: MeasureUnit;
     measureCount: string;
-    videoUrl: string;
-    previewImageUrl: string;
+    videoUrl?: string;
+    previewImageUrl?: string;
     note?: string;
 };
 

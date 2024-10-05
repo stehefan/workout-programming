@@ -13,9 +13,9 @@ function mapToDomainExercise(exercise: ExerciseGetPayload<ExerciseDefaultArgs>):
         exerciseName: exercise.exerciseName,
         measureUnit: exercise.measureUnit,
         measureCount: exercise.measureCount,
-        previewImageUrl: exercise.previewImageUrl,
+        previewImageUrl: exercise.previewImageUrl ?? undefined,
         note: exercise?.note ?? undefined,
-        videoUrl: exercise.videoUrl
+        videoUrl: exercise.videoUrl ?? undefined
     };
 }
 
