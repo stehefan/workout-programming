@@ -1,6 +1,7 @@
 type MeasureUnit = 'reps' | 'seconds';
 
 type ExerciseEntry = {
+    id: number;
     exerciseName: string;
     measureUnit: MeasureUnit;
     measureCount: string;
