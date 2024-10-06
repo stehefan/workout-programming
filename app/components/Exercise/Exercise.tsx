@@ -14,11 +14,11 @@ export type ExerciseProps = {
 export default function Exercise(props: ExerciseProps) {
     const [display, setDisplay] = useState(false);
     const [note, setNote] = useState(props.exercise.note);
-    const [saveIndicatorIsEnabled, enableSaveIndicator] = useState(false)
     const [isSaving, setIsSaving] = useState(false)
 
     const hasVideo = props.exercise.videoUrl !== undefined;
     const hasPreviewImage = props.exercise.previewImageUrl !== undefined;
+    const saveIndicatorIsEnabled = note !== props.exercise.note;
 
     const handleSave = async (formData: FormData) => {
         try {
@@ -26,7 +26,6 @@ export default function Exercise(props: ExerciseProps) {
                 .then(() => {
                     setTimeout(() => {
                         setIsSaving(false);
-                        enableSaveIndicator(false);
                     }, 2000)
                 });
         } catch (e: unknown) {
@@ -36,7 +35,6 @@ export default function Exercise(props: ExerciseProps) {
 
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNote(event.target.value);
-        enableSaveIndicator(true);
     };
 
     return (
