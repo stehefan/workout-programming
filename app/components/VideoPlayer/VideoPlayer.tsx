@@ -2,6 +2,7 @@
 
 import ReactPlayer from "react-player/lazy";
 import React, {useEffect, useRef} from "react";
+import {XCircleIcon} from "@heroicons/react/24/solid";
 
 export type VideoPlayerProps = {
     videoUrl: string;
@@ -27,9 +28,9 @@ export default function VideoPlayer(props: VideoPlayerProps) {
              className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
             <button
                 ref={modalRef}
-                className='outline-none font-bold mb-6 text-xl'
+                className='outline-none font-bold mb-6 text-xl flex items-center'
                 onClick={props.closeFn}>
-                ✖︎ close
+                <XCircleIcon className='size-10 pr-2'/> close
             </button>
             <ReactPlayer
                 url={props.videoUrl}
