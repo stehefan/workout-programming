@@ -1,11 +1,17 @@
+'use server';
+
 import Exercise from "./components/Exercise/Exercise";
 import {Prisma, PrismaClient} from "@prisma/client";
-import {ExerciseEntry} from "@/types/Exercise";
+import {ExerciseEntry, IdentifiableObject} from "@/types/Exercise";
+import {withPageAuthRequired} from '@auth0/nextjs-auth0';
 import ExerciseGetPayload = Prisma.ExerciseGetPayload;
 import ExerciseDefaultArgs = Prisma.ExerciseDefaultArgs;
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const prisma = new PrismaClient()
+
+function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
+    return a.id - b.id;
+}
 
 function mapToDomainExercise(exercise: ExerciseGetPayload<ExerciseDefaultArgs>): ExerciseEntry {
     return {
@@ -31,22 +37,25 @@ export default withPageAuthRequired(async function Home() {
                     }
                 }
             }
+        },
+        orderBy: {
+            id: 'asc'
         }
     });
 
     return (
         <div className='p-6'>
-            {program && program.workouts.map((workout, index) => (
+            {program && program.workouts.sort(sortByIdASC).map((workout, index) => (
                 <section key={index} className='pt-4 first:pt-0'>
                     <h2>{workout.name}</h2>
-                    {workout.sections.map((section, sectionIndex) => (
+                    {workout.sections.sort(sortByIdASC).map((section, sectionIndex) => (
                         <div key={sectionIndex}>
                             <h3 className='pt-4'>{section.name}</h3>
                             <div className='text-base font-thin pb-2'>
-                                {section.roundCount} Round{section.roundCount > 1 ? 's' : '' }
+                                {section.roundCount} Round{section.roundCount > 1 ? 's' : ''}
                             </div>
                             <div className='flex flex-wrap gap-4'>
-                                {section.exercises.map(exercise => (
+                                {section.exercises.sort(sortByIdASC).map(exercise => (
                                     <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)}/>
                                 ))}
                             </div>
@@ -57,4 +66,4 @@ export default withPageAuthRequired(async function Home() {
             }
         </div>
     );
-}, { returnTo: '/' })
+}, {returnTo: '/'})

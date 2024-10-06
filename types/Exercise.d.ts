@@ -1,7 +1,10 @@
 type MeasureUnit = 'reps' | 'seconds';
 
-type ExerciseEntry = {
+type IdentifiableObjcet = {
     id: number;
+}
+
+type ExerciseEntry = IdentifiableObjcet & {
     exerciseName: string;
     measureUnit: MeasureUnit;
     measureCount: string;
@@ -10,17 +13,17 @@ type ExerciseEntry = {
     note?: string;
 };
 
-type Section = {
+type Section = IdentifiableObjcet & {
     name: string;
     roundCount: number;
     exercises: ExerciseEntry[];
 };
 
-type Workout = {
+type Workout = IdentifiableObjcet & {
     name: string;
     sections: Section[];
 };
 
 type ExerciseProgram = Workout[];
 
-export type { ExerciseEntry, Section, Workout, ExerciseProgram };
+export type { IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram };

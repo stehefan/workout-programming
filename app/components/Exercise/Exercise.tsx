@@ -5,6 +5,7 @@ import Image from "next/image";
 import VideoPlayer from "@/app/components/VideoPlayer/VideoPlayer";
 import {ExerciseEntry} from "@/types/Exercise";
 import PreviewImagePlaceholder from "@/app/components/Exercise/PreviewImagePlaceholder";
+import {updateNote} from "@/app/actions";
 
 export type ExerciseProps = {
     exercise: ExerciseEntry;
@@ -12,13 +13,30 @@ export type ExerciseProps = {
 
 export default function Exercise(props: ExerciseProps) {
     const [display, setDisplay] = useState(false);
-    const [textArea, setTextArea] = useState(props.exercise.note);
+    const [note, setNote] = useState(props.exercise.note);
+    const [saveIndicatorIsEnabled, enableSaveIndicator] = useState(false)
+    const [isSaving, setIsSaving] = useState(false)
 
     const hasVideo = props.exercise.videoUrl !== undefined;
     const hasPreviewImage = props.exercise.previewImageUrl !== undefined;
 
+    const handleSave = async (formData: FormData) => {
+        try {
+            await updateNote(formData)
+                .then(() => {
+                    setTimeout(() => {
+                        setIsSaving(false);
+                        enableSaveIndicator(false);
+                    }, 2000)
+                });
+        } catch (e: unknown) {
+            console.error(e)
+        }
+    }
+
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTextArea(event.target.value);
+        setNote(event.target.value);
+        enableSaveIndicator(true);
     };
 
     return (
@@ -49,29 +67,45 @@ export default function Exercise(props: ExerciseProps) {
                     </span>
                 )}
             </div>
-            <div className='flex flex-col gap-2 p-2 h-full justify-between'>
-                <div className='mb-4'>
-                    <div className='font-bold text-xl '>
-                        {props.exercise.exerciseName}
+            <form action={handleSave} onSubmit={() => setIsSaving(true)}>
+                <div className='flex flex-col gap-2 p-2 h-full justify-between relative'>
+                    <div className='mb-4'>
+                        <div className='font-bold text-xl '>
+                            {props.exercise.exerciseName}
+                        </div>
+                        <div className='inline-flex text-xs items-center'>
+                            {props.exercise.measureCount} {props.exercise.measureUnit}
+                        </div>
                     </div>
-                    <div className='inline-flex text-xs items-center'>
-                        {props.exercise.measureCount} {props.exercise.measureUnit}
+                    <input type={'hidden'} name={'id'} value={props.exercise.id}/>
+                    <textarea
+                        name={'note'}
+                        className='resize-none p-2 bg-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 text-neutral-600 focus:outline-none rounded-b-lg'
+                        value={note}
+                        onChange={handleChange}
+                        placeholder='Your notes'
+                        rows={5}
+                    />
+                    <button type='submit' aria-label='Update note of exercise'
+                            aria-disabled={isSaving || !saveIndicatorIsEnabled}
+                            disabled={isSaving || !saveIndicatorIsEnabled}
+                            className={`absolute right-5 bottom-5 disabled:cursor-not-allowed transition-all duration-500 ease-linear ${saveIndicatorIsEnabled ? 'opacity-100' : 'opacity-25 '} ${isSaving ? 'motion-safe:animate-pulse' : ''}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                             className={`size-10`}>
+                            <path fillRule="evenodd"
+                                  d="M10.5 3.75a6 6 0 0 0-5.98 6.496A5.25 5.25 0 0 0 6.75 20.25H18a4.5 4.5 0 0 0 2.206-8.423 3.75 3.75 0 0 0-4.133-4.303A6.001 6.001 0 0 0 10.5 3.75Zm2.03 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v4.94a.75.75 0 0 0 1.5 0v-4.94l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z"
+                                  clipRule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+            {
+                display && hasVideo && (
+                    <div
+                        className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
+                        <button className='font-bold mb-6 text-xl' onClick={() => setDisplay(!display)}>✖︎ close</button>
+                        <VideoPlayer videoUrl={props.exercise.videoUrl!}/>
                     </div>
-                </div>
-                <textarea
-                    className='resize-none p-2 bg-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 text-neutral-600 focus:outline-none rounded-b-lg'
-                    value={textArea}
-                    onChange={handleChange}
-                    placeholder='Your notes'
-                    rows={5}
-                />
-            </div>
-            {display && hasVideo && (
-                <div
-                    className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
-                    <button className='font-bold mb-6 text-xl' onClick={() => setDisplay(!display)}>✖︎ close</button>
-                    <VideoPlayer videoUrl={props.exercise.videoUrl!}/>
-                </div>
-            )}
+                )}
         </div>);
 }
