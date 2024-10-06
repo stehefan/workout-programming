@@ -67,7 +67,7 @@ export default function Exercise(props: ExerciseProps) {
                     </span>
                 )}
             </div>
-            <form action={handleSave} onSubmit={() => setIsSaving(true)}>
+            <form action={handleSave} onSubmit={() => setIsSaving(true)} className={'h-full'}>
                 <div className='flex flex-col gap-2 p-2 h-full justify-between relative'>
                     <div className='mb-4'>
                         <div className='font-bold text-xl '>
