@@ -12,7 +12,7 @@ export type ExerciseProps = {
 }
 
 export default function Exercise(props: ExerciseProps) {
-    const [display, setDisplay] = useState(false);
+    const [displayVideoPlayer, setDisplayVideoPlayer] = useState(false);
     const [note, setNote] = useState(props.exercise.note);
     const [isSaving, setIsSaving] = useState(false)
 
@@ -39,7 +39,7 @@ export default function Exercise(props: ExerciseProps) {
 
     return (
         <div className={'w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
-            <div className={'relative aspect-video rounded-t-lg cursor-pointer'} onClick={() => setDisplay(!display)}>
+            <div className={'relative aspect-video rounded-t-lg cursor-pointer'} onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}>
                 {hasPreviewImage ? (
                     <Image
                         src={props.exercise.previewImageUrl!}
@@ -108,12 +108,11 @@ export default function Exercise(props: ExerciseProps) {
                 </div>
             </form>
             {
-                display && hasVideo && (
-                    <div
-                        className='fixed left-0 top-0 right-0 bottom-0 z-50 bg-black flex flex-col items-center justify-center'>
-                        <button className='font-bold mb-6 text-xl' onClick={() => setDisplay(!display)}>✖︎ close</button>
-                        <VideoPlayer videoUrl={props.exercise.videoUrl!}/>
-                    </div>
+                displayVideoPlayer && hasVideo && (
+                    <VideoPlayer
+                        videoUrl={props.exercise.videoUrl!}
+                        closeFn={() => setDisplayVideoPlayer(false)}
+                    />
                 )}
         </div>);
 }
