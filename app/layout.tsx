@@ -1,6 +1,6 @@
-import {UserProvider} from '@auth0/nextjs-auth0/client';
 import type {Metadata} from "next";
 import "./globals.css";
+import {ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 
 
 export const metadata: Metadata = {
@@ -10,12 +10,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en">
-        <UserProvider>
-            <body className={'antialiased'}>
+        <ClerkProvider>
+            <html lang="en">
+            <body>
             {children}
+            <SignedOut>
+                <SignInButton/>
+            </SignedOut>
+            <SignedIn>
+                <UserButton/>
+            </SignedIn>
             </body>
-        </UserProvider>
-        </html>
+            </html>
+        </ClerkProvider>
     );
 }

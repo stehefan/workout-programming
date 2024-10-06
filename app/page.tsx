@@ -3,7 +3,6 @@
 import Exercise from "./components/Exercise/Exercise";
 import {Prisma, PrismaClient} from "@prisma/client";
 import {ExerciseEntry, IdentifiableObject} from "@/types/Exercise";
-import {withPageAuthRequired} from '@auth0/nextjs-auth0';
 import ExerciseGetPayload = Prisma.ExerciseGetPayload;
 import ExerciseDefaultArgs = Prisma.ExerciseDefaultArgs;
 
@@ -25,7 +24,7 @@ function mapToDomainExercise(exercise: ExerciseGetPayload<ExerciseDefaultArgs>):
     };
 }
 
-export default withPageAuthRequired(async function Home() {
+export default async function Home() {
     const program = await prisma.program.findFirst({
         include: {
             workouts: {
@@ -65,5 +64,5 @@ export default withPageAuthRequired(async function Home() {
             ))
             }
         </div>
-    );
-}, {returnTo: '/'})
+    )
+}
