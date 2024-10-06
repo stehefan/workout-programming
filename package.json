@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
+    "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.20.0",
     "@vercel/blob": "^0.24.1",
     "cookie": "^0.7.1",
