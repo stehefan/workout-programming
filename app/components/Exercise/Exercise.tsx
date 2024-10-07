@@ -25,9 +25,7 @@ export default function Exercise(props: ExerciseProps) {
         try {
             await updateNote(formData)
                 .then(() => {
-                    setTimeout(() => {
-                        setIsSaving(false);
-                    }, 2000)
+                    setIsSaving(false);
                 });
         } catch (e: unknown) {
             console.error(e)
