@@ -34,8 +34,6 @@ export async function updateNote(
 
     const data = parse.data;
 
-    console.log(`Updating note for exercise with id ${data!.id} with note ${data!.note}`)
-
     return prisma.exercise
         .update({
             where: {
