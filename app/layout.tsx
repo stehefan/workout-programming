@@ -1,8 +1,6 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import {ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
-import Link from "next/link";
-
 
 export const metadata: Metadata = {
     title: "Hardly Working Out",
