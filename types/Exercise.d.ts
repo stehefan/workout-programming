@@ -16,17 +16,17 @@ type ExerciseEntry = IdentifiableObjcet & {
 type Section = IdentifiableObjcet & {
     name: string;
     roundCount: number;
-    exercises: ExerciseEntry[];
+    exercises?: ExerciseEntry[];
 };
 
 type Workout = IdentifiableObjcet & {
     name: string;
-    sections: Section[];
+    sections?: Section[];
 };
 
 type ExerciseProgram = IdentifiableObjcet & {
     name: string;
-    workouts: Workout[];
+    workouts?: Workout[];
 };
 
 export type {IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram};
