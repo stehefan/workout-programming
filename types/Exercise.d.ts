@@ -29,4 +29,4 @@ type ExerciseProgram = IdentifiableObjcet & {
     workouts?: Workout[];
 };
 
-export type {IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram};
+export type {IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram, MeasureUnit};
