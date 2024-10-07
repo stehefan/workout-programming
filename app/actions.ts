@@ -6,6 +6,8 @@ import {ResponseMessageError} from "@/types/ResponseMessageError";
 import {revalidatePath} from "next/cache";
 import {auth} from "@clerk/nextjs/server";
 
+const prisma = new PrismaClient()
+
 export async function updateNote(
     formData: FormData
 ): Promise<void> {
@@ -31,8 +33,6 @@ export async function updateNote(
     }
 
     const data = parse.data;
-    const prisma = new PrismaClient()
-
 
     console.log(`Updating note for exercise with id ${data!.id} with note ${data!.note}`)
 

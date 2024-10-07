@@ -1,13 +1,53 @@
-import {ExerciseEntry, IdentifiableObject} from "@/types/Exercise";
-import {Prisma} from "@prisma/client";
-import ExerciseGetPayload = Prisma.ExerciseGetPayload;
-import ExerciseDefaultArgs = Prisma.ExerciseDefaultArgs;
+import {ExerciseEntry, IdentifiableObject, Section, Workout} from "@/types/Exercise";
+import {$Enums} from "@prisma/client";
 
 export function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
     return a.id - b.id;
 }
 
-export function mapToDomainExercise(exercise: ExerciseGetPayload<ExerciseDefaultArgs>): ExerciseEntry {
+/*
+ * Mapper functions that infer their types from the uses context; Prisma does not automatically create types for those
+ * output items, so this is a way of both satisfying the compiler and keeping the types in sync.
+ */
+
+type PrismaProgramOutput = { id: number; name: string; programId: number; };
+type PrismaSectionOutput = { id: number; name: string; roundCount: number; workoutId: number };
+type PrismaExerciseOutput = {
+    id: number;
+    exerciseName: string;
+    measureUnit: $Enums.MeasureUnit;
+    measureCount: string;
+    previewImageUrl: string | null;
+    note: string | null;
+    videoUrl: string | null;
+    sectionId: number
+};
+
+export function mapToDomainWorkout(workout: {
+    sections: ({        exercises: PrismaExerciseOutput[];
+    } & PrismaSectionOutput)[];
+} & PrismaProgramOutput): Workout {
+    return {
+        id: workout.id,
+        name: workout.name,
+        sections: workout.sections.map(section => {
+            return mapToDomainSection(section);
+        })
+    }
+}
+
+export function mapToDomainSection(section: {
+    exercises: PrismaExerciseOutput[]
+} & PrismaSectionOutput): Section {
+    return {
+        id: section.id,
+        name: section.name,
+        roundCount: section.roundCount,
+        exercises: section.exercises.map(exercise => mapToDomainExercise(exercise))
+    }
+}
+
+export function mapToDomainExercise(exercise: PrismaExerciseOutput): ExerciseEntry {
     return {
         id: exercise.id,
         exerciseName: exercise.exerciseName,

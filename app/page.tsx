@@ -1,68 +1,66 @@
 'use server';
 
-import Exercise from "./components/Exercise/Exercise";
+import {ExclamationCircleIcon} from "@heroicons/react/24/solid";
 import {Prisma, PrismaClient} from "@prisma/client";
-import {ExerciseEntry, IdentifiableObject} from "@/types/Exercise";
-import ExerciseGetPayload = Prisma.ExerciseGetPayload;
-import ExerciseDefaultArgs = Prisma.ExerciseDefaultArgs;
+import {ExerciseProgram} from "@/types/Exercise";
+import WorkoutPreview from "@/app/components/WorkoutPreview/WorkoutPreview";
+import {mapToDomainWorkout} from "@/app/utils";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
-    return a.id - b.id;
-}
-
-function mapToDomainExercise(exercise: ExerciseGetPayload<ExerciseDefaultArgs>): ExerciseEntry {
-    return {
-        id: exercise.id,
-        exerciseName: exercise.exerciseName,
-        measureUnit: exercise.measureUnit,
-        measureCount: exercise.measureCount,
-        previewImageUrl: exercise.previewImageUrl ?? undefined,
-        note: exercise?.note ?? undefined,
-        videoUrl: exercise.videoUrl ?? undefined
-    };
-}
-
-export default async function Home() {
-    const program = await prisma.program.findFirst({
-        include: {
-            workouts: {
-                include: {
-                    sections: {
-                        include: {
-                            exercises: true
+async function getProgramWithRelations() {
+    return prisma.program
+        .findFirst({
+            include: {
+                workouts: {
+                    include: {
+                        sections: {
+                            include: {
+                                exercises: true
+                            }
                         }
                     }
                 }
+            },
+            orderBy: {
+                id: 'asc'
             }
-        },
-        orderBy: {
-            id: 'asc'
-        }
-    });
+        });
+}
+
+type ProgramWithRelations = Prisma.PromiseReturnType<typeof getProgramWithRelations>
+
+export default async function Home() {
+
+    const programWithRelations: ProgramWithRelations = await getProgramWithRelations();
+
+
+    const program: ExerciseProgram | null = programWithRelations ? {
+        id: programWithRelations!.id,
+        name: programWithRelations!.name,
+        workouts: programWithRelations!.workouts.map(workout => {
+            return mapToDomainWorkout(workout);
+        })
+    } : null
+
+
+    if (!program) {
+        return (
+            <div className={'h-full flex justify-center gap-2 pt-10 pb-10'}>
+                <ExclamationCircleIcon className='h-12 fill-red-200'/>
+                <span className='text-red-200 text-5xl font-bold'>No program found</span>
+            </div>
+        )
+    }
 
     return (
-        <div className='p-6'>
-            {program && program.workouts.sort(sortByIdASC).map((workout, index) => (
-                <section key={index} className='pt-4 first:pt-0'>
-                    <h2>{workout.name}</h2>
-                    {workout.sections.sort(sortByIdASC).map((section, sectionIndex) => (
-                        <div key={sectionIndex}>
-                            <h3 className='pt-4'>{section.name}</h3>
-                            <div className='text-base font-thin pb-2'>
-                                {section.roundCount} Round{section.roundCount > 1 ? 's' : ''}
-                            </div>
-                            <div className='flex flex-wrap gap-4'>
-                                {section.exercises.sort(sortByIdASC).map(exercise => (
-                                    <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)}/>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </section>
-            ))
-            }
+        <div className={'h-full flex flex-col justify-center p-4'}>
+            <span className='text-4xl w-full pb-4'>{program.name}</span>
+            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-4'>
+                {program.workouts && program.workouts.map(workout => (
+                    <WorkoutPreview workout={workout} key={workout.id}/>
+                ))}
+            </div>
         </div>
     )
 }
