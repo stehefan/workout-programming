@@ -24,6 +24,9 @@ type Workout = IdentifiableObjcet & {
     sections: Section[];
 };
 
-type ExerciseProgram = Workout[];
+type ExerciseProgram = IdentifiableObjcet & {
+    name: string;
+    workouts: Workout[];
+};
 
-export type { IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram };
+export type {IdentifiableObject, ExerciseEntry, Section, Workout, ExerciseProgram};
