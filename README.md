@@ -21,7 +21,7 @@ previous view. Right now, these videos can be hosted on any platform which is su
 
 ## Development
 ### Prerequisites
-
+#### Node.js
 This project expects Node.js version v20.17.0 or higher. Use e.g. ode Version Manager (NVM) to install and manage
 Node.js versions. Find out more about NVM at https://github.com/nvm-sh/nvm.
 
@@ -31,20 +31,28 @@ Install the dependencies:
 npm install
 ```
 
+#### PostgreSQL
+This project expects a PostgreSQL database that can be used by prisma to manage the database schema, migrations and 
+data. See the [prisma documentation](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgres)
+for more information on how to configure your local environment and how to setup the database via the prisma CLI.
+
+#### Clerk
+This project uses [Clerk](https://clerk.com/) to manage authentication. You need to create an account and configure your
+local environment to connect to your account for authentication. See the [Clerk documentation](https://docs.clerk.com/quickstarts/nextjs)
+for more information on how to configure your local environment.
+
+#### Husky / Git hooks
 I use [husky](https://typicode.github.io/husky/) to manage git-hooks. It will get automatically installed as part of
 the `npm install` command and creates a `.husky` folder in the project root in which you can add more git-hooks if
-needed. Check out the husky documentation for more information.
+needed. Check out the husky documentation for more information. Adjust for your package manager of choice if you are not
+using npm.
 
 ### Development
 
+To run the development server, use the following command:
+
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
