@@ -48,7 +48,7 @@ export default function Exercise(props: ExerciseProps) {
                         height={721}
                         className={'rounded-t-lg object-cover w-96 h-auto'}/>
                 ) : (
-                    <div className='w-96 h-auto'>
+                    <div className='w-full h-auto'>
                         <PreviewImagePlaceholder/>
                     </div>
                 )}
