@@ -24,11 +24,14 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
                     </SignedOut>
                 </div>
             </nav>
-            <SignedIn>
-                <main className='w-full max-w-screen-lg p-4'>
+            <main className='w-full max-w-screen-lg p-4'>
+                <SignedIn>
                     {children}
-                </main>
-            </SignedIn>
+                </SignedIn>
+                <SignedOut>
+                        <div className='text-center w-full'>To start managing your workouts, please use the login.</div>
+                </SignedOut>
+            </main>
             </body>
             </html>
         </ClerkProvider>
