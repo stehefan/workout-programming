@@ -37,7 +37,7 @@ export default function Exercise(props: ExerciseProps) {
     };
 
     return (
-        <div className={'w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
+        <div className={'max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'}
                  onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}>
                 {hasPreviewImage ? (
