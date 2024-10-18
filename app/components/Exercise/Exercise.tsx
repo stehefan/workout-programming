@@ -37,7 +37,7 @@ export default function Exercise(props: ExerciseProps) {
     };
 
     return (
-        <div className={'w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
+        <div className={'w-full max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
             <div className={'relative aspect-video rounded-t-lg cursor-pointer'}
                  onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}>
                 {hasPreviewImage ? (
@@ -48,7 +48,7 @@ export default function Exercise(props: ExerciseProps) {
                         height={721}
                         className={'rounded-t-lg object-cover w-96 h-auto'}/>
                 ) : (
-                    <div className='w-96 h-auto'>
+                    <div className='w-full h-auto'>
                         <PreviewImagePlaceholder/>
                     </div>
                 )}
