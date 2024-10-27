@@ -3,7 +3,6 @@
 import {PrismaClient} from "@prisma/client";
 import {z} from "zod";
 import {ResponseMessageError} from "@/types/ResponseMessageError";
-import {revalidatePath} from "next/cache";
 import {auth} from "@clerk/nextjs/server";
 
 const prisma = new PrismaClient()
@@ -34,7 +33,7 @@ export async function updateNote(
 
     const data = parse.data;
 
-    return prisma.exercise
+    prisma.exercise
         .update({
             where: {
                 id: data!.id
@@ -48,8 +47,5 @@ export async function updateNote(
             throw new Error(`Request failed - ${reason}`, {
                 cause: ResponseMessageError.DatabaseError
             })
-        })
-        .then(() => {
-            revalidatePath('/')
         })
 }
