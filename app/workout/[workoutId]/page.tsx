@@ -5,10 +5,13 @@ import {mapToDomainExercise, sortByIdASC} from "@/app/utils";
 
 const prisma = new PrismaClient()
 
-export default async function Page({params}: { params: { workoutId: string } }) {
-    if (Number.isNaN(params.workoutId)) {
-        return notFound()
+type Params = Promise<{ workoutId: string }>;
 
+export default async function Page({params}: { params: Params }) {
+    const {workoutId} = await params;
+
+    if (Number.isNaN(workoutId)) {
+        return notFound()
     }
 
     const workout = await prisma.workout.findFirst({
@@ -23,7 +26,7 @@ export default async function Page({params}: { params: { workoutId: string } }) 
             id: 'asc'
         },
         where: {
-            id: Number.parseInt(params.workoutId)
+            id: Number.parseInt(workoutId)
         }
     });
 
