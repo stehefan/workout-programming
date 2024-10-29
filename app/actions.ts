@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 export async function updateNote(
     formData: FormData
 ): Promise<void> {
-    const { userId } = auth()
+    const { userId } = await auth()
 
     if (!userId) {
         throw new Error('You must be signed in to add an item to your cart')
