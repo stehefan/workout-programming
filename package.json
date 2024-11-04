@@ -32,7 +32,7 @@
     "@types/node": "^22.8.1",
     "@types/react": "18.3.11",
     "@types/react-dom": "^18",
-    "eslint": "8.57.1",
+    "eslint": "9.14.0",
     "eslint-config-next": "14.2.15",
     "husky": "9.1.6",
     "postcss": "8.4.47",
