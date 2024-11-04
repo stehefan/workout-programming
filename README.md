@@ -2,6 +2,8 @@
 Webapp to manage programming for workouts including the possibility to add exercise videos to the programming, notes and
 having an overview of the exercises and different workouts.
 
+This is, as several other projects of mine, mostly a testing- and play-ground for trying NextJS and related technologies.
+
 ### Features
 #### Program overview
 ![](./docs/images/overview_program.png)
