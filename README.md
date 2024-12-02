@@ -32,7 +32,7 @@ Node.js versions. Find out more about NVM at https://github.com/nvm-sh/nvm.
 Install the dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 #### PostgreSQL
@@ -47,7 +47,7 @@ for more information on how to configure your local environment.
 
 #### Husky / Git hooks
 I use [husky](https://typicode.github.io/husky/) to manage git-hooks. It will get automatically installed as part of
-the `npm install` command and creates a `.husky` folder in the project root in which you can add more git-hooks if
+the `pnpm install` command and creates a `.husky` folder in the project root in which you can add more git-hooks if
 needed. Check out the husky documentation for more information. Adjust for your package manager of choice if you are not
 using npm.
 
@@ -56,7 +56,7 @@ using npm.
 To run the development server, use the following command:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
