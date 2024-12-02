@@ -54,7 +54,7 @@ export default async function Home() {
     }
 
     return (
-        <div className={'h-full flex flex-col justify-center p-4'}>
+        <div className={'max-h-full flex flex-col justify-start p-4'}>
             <span className='text-4xl w-full pb-4'>{program.name}</span>
             <div className='grid grid-cols-2 max-md:grid-cols-1 gap-4'>
                 {program.workouts && program.workouts.map(workout => (
