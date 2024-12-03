@@ -33,10 +33,11 @@ export default function WorkoutPreview(props: WorkoutPreviewProps) {
     const exercises = topUpPreviewImages(exercisesWithImages)
         .map((exercise, index) => {
             const width = 128;
+            const height = Math.floor(width / 16 * 9);
             return <Image key={`${exercise.id}-${index}`}
-                          src={exercise.previewImageUrl!}
+                          src={`https://wsrv.nl/?url=${exercise.previewImageUrl!}&w=${width}&h=${height}&dpr=2`}
                           width={width}
-                          height={width / 16 * 9}
+                          height={height}
                           alt={exercise.exerciseName}
             />
         })

@@ -7,6 +7,11 @@ const nextConfig = {
                 hostname: '*.public.blob.vercel-storage.com',
                 port: '',
             },
+            {
+                protocol: 'https',
+                hostname: 'wsrv.nl',
+                port: '',
+            },
         ],
     },
 };

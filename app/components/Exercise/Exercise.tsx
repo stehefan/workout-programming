@@ -35,18 +35,20 @@ export default function Exercise(props: ExerciseProps) {
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNote(event.target.value);
     };
+    const width: number = 382;
+    const height: number = Math.floor(width / 16 * 9);
 
     return (
         <div className={'w-full max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
-            <div className={'relative aspect-video rounded-t-lg cursor-pointer'}
+            <div className={'relative rounded-t-lg cursor-pointer'}
                  onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}>
                 {hasPreviewImage ? (
                     <Image
-                        src={props.exercise.previewImageUrl!}
+                        src={`https://wsrv.nl/?url=${props.exercise.previewImageUrl!}&w=${width}&h=${height}&dpr=2`}
                         alt={'Woman holding dumbbell in white crew neck t-shirt'}
-                        width={1080}
-                        height={721}
-                        className={'rounded-t-lg object-cover w-96 h-auto'}/>
+                        width={width}
+                        height={height}
+                        className={'rounded-t-lg object-cover'}/>
                 ) : (
                     <div className='w-full h-auto'>
                         <PreviewImagePlaceholder/>
