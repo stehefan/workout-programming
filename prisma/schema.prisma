@@ -29,7 +29,7 @@ model Exercise {
   note            String?
   section         Section     @relation(fields: [sectionId], references: [id])
   sectionId       Int
-  userId          Int?
+  userId          Int
 }
 
 model Section {
@@ -39,7 +39,7 @@ model Section {
   exercises  Exercise[]
   workout    Workout    @relation(fields: [workoutId], references: [id])
   workoutId  Int
-  userId     Int?
+  userId     Int
 }
 
 model Workout {
@@ -48,12 +48,12 @@ model Workout {
   sections  Section[]
   program   Program   @relation(fields: [programId], references: [id])
   programId Int
-  userId    Int?
+  userId    Int
 }
 
 model Program {
   id       Int       @id @default(autoincrement())
   name     String
   workouts Workout[]
-  userId   Int?
+  userId   Int
 }
