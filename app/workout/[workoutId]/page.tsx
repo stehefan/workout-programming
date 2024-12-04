@@ -1,7 +1,8 @@
 import {PrismaClient} from "@prisma/client";
 import {notFound} from "next/navigation";
 import Exercise from "@/app/components/Exercise/Exercise";
-import {mapToDomainExercise, sortByIdASC} from "@/app/utils";
+import {AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC} from "@/app/utils";
+import {auth} from "@clerk/nextjs/server";
 
 const prisma = new PrismaClient()
 
@@ -12,6 +13,16 @@ export default async function Page({params}: { params: Params }) {
 
     if (Number.isNaN(workoutId)) {
         return notFound()
+    }
+
+    const { userId } = await auth();
+    if (!userId) {
+        throw new Error('You must be signed in to update notes');
+    }
+
+    const appUser: AppUser | undefined = await getUserForClerkUserId(userId);
+    if (!appUser) {
+        throw new Error('You need to be logged in and have a clerk user assigned to you');
     }
 
     const workout = await prisma.workout.findFirst({
@@ -26,7 +37,8 @@ export default async function Page({params}: { params: Params }) {
             id: 'asc'
         },
         where: {
-            id: Number.parseInt(workoutId)
+            id: Number.parseInt(workoutId),
+            userId: appUser.id,
         }
     });
 

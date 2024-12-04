@@ -4,16 +4,21 @@ import {PrismaClient} from "@prisma/client";
 import {z} from "zod";
 import {ResponseMessageError} from "@/types/ResponseMessageError";
 import {auth} from "@clerk/nextjs/server";
+import {AppUser, getUserForClerkUserId} from "@/app/utils";
 
 const prisma = new PrismaClient()
 
 export async function updateNote(
     formData: FormData
 ): Promise<void> {
-    const { userId } = await auth()
-
+    const { userId } = await auth();
     if (!userId) {
-        throw new Error('You must be signed in to add an item to your cart')
+        throw new Error('You must be signed in to update notes');
+    }
+
+    const appUser: AppUser | undefined = await getUserForClerkUserId(userId);
+    if (!appUser) {
+        throw new Error('You need to be logged in and have a clerk user assigned to you');
     }
 
     const schema = z.object({
@@ -36,7 +41,8 @@ export async function updateNote(
     prisma.exercise
         .update({
             where: {
-                id: data!.id
+                id: data!.id,
+                userId: appUser.id
             },
             data: {
                 note: data!.note
