@@ -16,7 +16,7 @@ enum MeasureUnit {
 
 model User {
   id          Int    @id @default(autoincrement())
-  clerkUserId String
+  clerkUserId String @unique
 }
 
 model Exercise {
