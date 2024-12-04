@@ -14,6 +14,11 @@ enum MeasureUnit {
   seconds
 }
 
+model User {
+  id          Int    @id @default(autoincrement())
+  clerkUserId String
+}
+
 model Exercise {
   id              Int         @id @default(autoincrement())
   exerciseName    String
@@ -24,6 +29,7 @@ model Exercise {
   note            String?
   section         Section     @relation(fields: [sectionId], references: [id])
   sectionId       Int
+  userId          Int?
 }
 
 model Section {
@@ -33,6 +39,7 @@ model Section {
   exercises  Exercise[]
   workout    Workout    @relation(fields: [workoutId], references: [id])
   workoutId  Int
+  userId     Int?
 }
 
 model Workout {
@@ -41,10 +48,12 @@ model Workout {
   sections  Section[]
   program   Program   @relation(fields: [programId], references: [id])
   programId Int
+  userId    Int?
 }
 
 model Program {
   id       Int       @id @default(autoincrement())
   name     String
   workouts Workout[]
+  userId   Int?
 }
