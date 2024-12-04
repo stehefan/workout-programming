@@ -4,11 +4,21 @@ import {ExclamationCircleIcon} from "@heroicons/react/24/solid";
 import {Prisma, PrismaClient} from "@prisma/client";
 import {ExerciseProgram} from "@/types/Exercise";
 import WorkoutPreview from "@/app/components/WorkoutPreview/WorkoutPreview";
-import {mapToDomainWorkout} from "@/app/utils";
+import {AppUser, getUserForClerkUserId, mapToDomainWorkout} from "@/app/utils";
+import {currentUser} from "@clerk/nextjs/server";
 
 const prisma = new PrismaClient();
 
+
 async function getProgramWithRelations() {
+
+    const clerkUser = (await currentUser())!;
+    const appUser: AppUser = await getUserForClerkUserId(clerkUser.id);
+
+    if (!appUser) {
+        throw new Error("You need to be logged in and have a clerk user assigned to you")
+    }
+
     return prisma.program
         .findFirst({
             include: {
@@ -22,6 +32,9 @@ async function getProgramWithRelations() {
                     }
                 }
             },
+            where: {
+                userId: appUser.id
+            },
             orderBy: {
                 id: 'asc'
             }
@@ -33,7 +46,6 @@ type ProgramWithRelations = Prisma.PromiseReturnType<typeof getProgramWithRelati
 export default async function Home() {
 
     const programWithRelations: ProgramWithRelations = await getProgramWithRelations();
-
 
     const program: ExerciseProgram | null = programWithRelations ? {
         id: programWithRelations!.id,

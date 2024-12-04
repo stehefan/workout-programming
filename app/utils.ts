@@ -1,5 +1,8 @@
 import {ExerciseEntry, IdentifiableObject, Section, Workout} from "@/types/Exercise";
-import {$Enums} from "@prisma/client";
+import {$Enums, Prisma, PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 
 export function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
     return a.id - b.id;
@@ -57,4 +60,13 @@ export function mapToDomainExercise(exercise: PrismaExerciseOutput): ExerciseEnt
         note: exercise?.note ?? undefined,
         videoUrl: exercise.videoUrl ?? undefined
     };
+}
+
+export type AppUser = Prisma.PromiseReturnType<typeof getUserForClerkUserId>
+export async function getUserForClerkUserId(clerkUserId: string) {
+    return prisma.user.findFirst({
+        where: {
+            clerkUserId: clerkUserId
+        }
+    })
 }
