@@ -12,7 +12,7 @@ export default async function Page({params}: { params: Params }) {
     const {workoutId} = await params;
 
     if (Number.isNaN(workoutId)) {
-        return notFound()
+        return notFound();
     }
 
     const { userId } = await auth();

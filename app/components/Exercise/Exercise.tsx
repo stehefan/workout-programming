@@ -7,6 +7,7 @@ import {ExerciseEntry} from "@/types/Exercise";
 import PreviewImagePlaceholder from "@/app/components/Exercise/PreviewImagePlaceholder";
 import {updateNote} from "@/app/actions";
 import {ArrowPathIcon, CloudArrowDownIcon, PlayIcon} from "@heroicons/react/24/solid";
+import {PencilSquareIcon} from "@heroicons/react/16/solid";
 
 export type ExerciseProps = {
     exercise: ExerciseEntry;
@@ -39,9 +40,15 @@ export default function Exercise(props: ExerciseProps) {
     const height: number = Math.floor(width / 16 * 9);
 
     return (
-        <div className={'w-full max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600'}>
-            <div className={'relative rounded-t-lg cursor-pointer'}
-                 onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}>
+        <div
+            className={'w-full max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600 relative'}>
+            <button
+                disabled
+                className='inline-flex items-center h-10 w-10 justify-center text-sm absolute z-50 right-0 top-0 m-2 bg-black/40 rounded-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground'>
+                <PencilSquareIcon className='w-5 h-5' />
+                <span className="sr-only">Edit item</span>
+            </button>
+            <div className={'relative rounded-t-lg'}>
                 {hasPreviewImage ? (
                     <Image
                         src={`https://wsrv.nl/?url=${props.exercise.previewImageUrl!}&w=${width}&h=${height}&dpr=2`}
@@ -56,7 +63,8 @@ export default function Exercise(props: ExerciseProps) {
                 )}
                 {props.exercise.videoUrl && (
                     <span
-                        className='w-16 h-16 text-5xl absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-white inline-flex justify-center items-center rounded-full bg-neutral-800/75'
+                        className='w-16 h-16 text-5xl absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-white inline-flex justify-center items-center rounded-full bg-neutral-800/75 cursor-pointer'
+                        onClick={() => setDisplayVideoPlayer(!displayVideoPlayer)}
                     >
                         <PlayIcon className='size-6'/>
                     </span>
