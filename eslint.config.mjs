@@ -6,6 +6,9 @@ import { fixupConfigRules } from '@eslint/compat';
 
 const compat = new FlatCompat();
 export default tseslint.config(
+    {
+        ignores: ['node_modules', 'dist', 'build', 'coverage', 'public', '.next'],
+    },
     stylistic.configs.customize({
         indent: 4,
         semi: true,
