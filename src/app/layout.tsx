@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Manage your workouts",
 };
 
-export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({modal, children}: { modal: React.ReactNode, children: React.ReactNode }) {
     return (
         <ClerkProvider
             appearance={{
@@ -31,6 +31,8 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
             <main className='w-full max-w-screen-lg p-4 h-full'>
                 {children}
             </main>
+            {modal}
+            <div id="modal-root" />
             </body>
             </html>
         </ClerkProvider>

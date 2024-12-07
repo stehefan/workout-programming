@@ -8,6 +8,7 @@ import PreviewImagePlaceholder from "@/components/ui/Exercise/PreviewImagePlaceh
 import {updateNote} from "@/app/actions";
 import {ArrowPathIcon, CloudArrowDownIcon, PlayIcon} from "@heroicons/react/24/solid";
 import {PencilSquareIcon} from "@heroicons/react/16/solid";
+import Link from "next/link";
 
 export type ExerciseProps = {
     exercise: ExerciseEntry;
@@ -42,12 +43,14 @@ export default function Exercise(props: ExerciseProps) {
     return (
         <div
             className={'w-full max-w-96 flex flex-col rounded-lg border border-neutral-300 dark:border-neutral-600 relative'}>
-            <button
-                disabled
-                className='inline-flex items-center h-10 w-10 justify-center text-sm absolute z-50 right-0 top-0 m-2 bg-black/40 rounded-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground'>
-                <PencilSquareIcon className='w-5 h-5' />
+            <Link
+                href={`/exercise/${props.exercise.id}`}
+                className='inline-flex items-center size-10 justify-center text-sm absolute z-10 right-0 top-0 m-2 bg-black/40 rounded-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground'>
+                <span className='size-5'>
+                    <PencilSquareIcon />
+                </span>
                 <span className="sr-only">Edit item</span>
-            </button>
+            </Link>
             <div className={'relative rounded-t-lg'}>
                 {hasPreviewImage ? (
                     <Image
