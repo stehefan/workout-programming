@@ -222,7 +222,7 @@ const main = async () => {
                                                     "measureUnit": "reps",
                                                     "measureCount": "∞",
                                                     "videoUrl": process.env.SEED_PELVIS_TILTS_VIDEO,
-                                                    "previewImageUrl": "https://jzsirpofgtmehzlx.public.blob.",
+                                                    "previewImageUrl": "https://jzsirpofgtmehzlx.public.blob.vercel-storage.com/training/preview/pelvis_tilts_preview-u7oYYZhJFKRfisUo18kfSHltfFbGfB.png",
                                                     "note": "as many as you need um vom Kopf in den Koerper zu kommen",
                                                     "userId": user.id,
                                                 },
