@@ -2,9 +2,9 @@
 
 import React, {useState} from "react";
 import Image from "next/image";
-import VideoPlayer from "@/app/components/VideoPlayer/VideoPlayer";
+import VideoPlayer from "@/components/ui/VideoPlayer/VideoPlayer";
 import {ExerciseEntry} from "@/types/Exercise";
-import PreviewImagePlaceholder from "@/app/components/Exercise/PreviewImagePlaceholder";
+import PreviewImagePlaceholder from "@/components/ui/Exercise/PreviewImagePlaceholder";
 import {updateNote} from "@/app/actions";
 import {ArrowPathIcon, CloudArrowDownIcon, PlayIcon} from "@heroicons/react/24/solid";
 import {PencilSquareIcon} from "@heroicons/react/16/solid";

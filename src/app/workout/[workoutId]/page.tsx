@@ -1,6 +1,6 @@
 import {PrismaClient} from "@prisma/client";
 import {notFound} from "next/navigation";
-import Exercise from "@/app/components/Exercise/Exercise";
+import Exercise from "@/components/ui/Exercise/Exercise";
 import {AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC} from "@/app/utils";
 import {auth} from "@clerk/nextjs/server";
 

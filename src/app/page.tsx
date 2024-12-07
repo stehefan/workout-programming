@@ -3,7 +3,7 @@
 import {ExclamationCircleIcon} from "@heroicons/react/24/solid";
 import {Prisma, PrismaClient} from "@prisma/client";
 import {ExerciseProgram} from "@/types/Exercise";
-import WorkoutPreview from "@/app/components/WorkoutPreview/WorkoutPreview";
+import WorkoutPreview from "@/components/ui/WorkoutPreview/WorkoutPreview";
 import {AppUser, getUserForClerkUserId, mapToDomainWorkout} from "@/app/utils";
 import {currentUser} from "@clerk/nextjs/server";
 
