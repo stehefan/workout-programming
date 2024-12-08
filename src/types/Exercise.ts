@@ -5,11 +5,11 @@ export enum MeasureUnits {
 
 export type MeasureUnitType = `${MeasureUnits}`;
 
-export type IdentifiableObjcet = {
+export type IdentifiableObject = {
     id: number;
 }
 
-export type ExerciseEntry = IdentifiableObjcet & {
+export type ExerciseEntry = IdentifiableObject & {
     exerciseName: string;
     measureUnit: MeasureUnitType;
     measureCount: string;
@@ -18,18 +18,18 @@ export type ExerciseEntry = IdentifiableObjcet & {
     note?: string;
 };
 
-export type Section = IdentifiableObjcet & {
+export type Section = IdentifiableObject & {
     name: string;
     roundCount: number;
     exercises?: ExerciseEntry[];
 };
 
-export type Workout = IdentifiableObjcet & {
+export type Workout = IdentifiableObject & {
     name: string;
     sections?: Section[];
 };
 
-export type ExerciseProgram = IdentifiableObjcet & {
+export type ExerciseProgram = IdentifiableObject & {
     name: string;
     workouts?: Workout[];
 };
