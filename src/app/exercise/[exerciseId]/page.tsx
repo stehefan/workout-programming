@@ -3,7 +3,7 @@ import {auth} from "@clerk/nextjs/server";
 import {AppUser, getUserForClerkUserId} from "@/app/utils";
 import ExerciseEditForm from "@/components/ui/ExerciseEditForm/ExerciseEditForm";
 import {ExerciseEntry} from "@/types/Exercise";
-import { PrismaClient } from "@prisma/client";
+import {PrismaClient} from "@prisma/client";
 
 type ExercisePageParams = Promise<{ exerciseId: string }>;
 const prisma = new PrismaClient();
@@ -34,6 +34,8 @@ export default async function ExercisePage({params}: { params: ExercisePageParam
     }
 
     return (
-        <ExerciseEditForm workout={workout as ExerciseEntry}/>
+        <div className='flex items-center max-w-3xl min-w-2xl'>
+            <ExerciseEditForm workout={workout as ExerciseEntry}/>
+        </div>
     )
 }

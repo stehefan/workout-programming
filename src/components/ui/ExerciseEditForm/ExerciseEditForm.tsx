@@ -1,27 +1,32 @@
-import {ExerciseEntry} from "@/types/Exercise";
+import {ExerciseEntry, MeasureUnits} from "@/types/Exercise";
 
 export type ExerciseEditFormProps = {
     workout: ExerciseEntry
 }
 
 export default function ExerciseEditForm({workout}: ExerciseEditFormProps) {
-    // TODO: use type to get value for measureUnit
     return (
-        <form>
-            <div className='grid grid-cols-2 '>
-                <label htmlFor="name">Exercise</label>
-                <input className="text-black" type="text" name="name" value={workout.exerciseName}/>
-                <label htmlFor="measureUnit">Measure Unit</label>
-                <select className="text-black" name="measureUnit" id="measureUnit">
-                    <option>reps</option>
-                    <option>seconds</option>
-                </select>
-                <label htmlFor="measureCount">Count</label>
-                <input className="text-black" type="text" name="measureCount" value={workout.measureCount}/>
-                <label htmlFor="videoUrl">videoUrl</label>
-                <input className="text-black" type="text" name="videoUrl" value={workout.videoUrl || ''}/>
-                <label htmlFor="previewImageUrl">previewImageUrl</label>
-                <input className="text-black" type="text" name="previewImageUrl" value={workout.previewImageUrl || ''}/>
+        <form className='w-full'>
+            <div className='grid grid-cols-3 gap-2 w-full content-center items-center'>
+                <label className='text-lg mr-5' htmlFor="name">Exercise Name:</label>
+                <input type="text" className='col-span-2' name="name" value={workout.exerciseName}/>
+                <label className='text-lg mr-5' htmlFor="measureUnit">Unit of Measurement:</label>
+                <div className='inline-flex gap-5 col-span-2'>
+                    {Object.keys(MeasureUnits).map((unit) => (
+                        <span className='inline-flex flex-row justify-center items-center'>
+                            <input name='measureUnit' id={`measure-${unit}`} type='radio' checked={unit === workout.measureUnit}/>
+                            <label className='ml-2 leading-none' htmlFor={`measure-${unit}`}>{unit}</label>
+                        </span>
+                    ))}
+                </div>
+                <label className='text-lg mr-5' htmlFor="measureCount">Number of 'Units':</label>
+                <input type="text" className='col-span-2' name="measureCount" value={workout.measureCount}/>
+                <label className='text-lg mr-5' htmlFor="videoUrl">URL to the YouTube Video:</label>
+                <input type="text" className='col-span-2' name="videoUrl" value={workout.videoUrl || ''}/>
+                <label className='text-lg mr-5' htmlFor="previewImageUrl">URL to the Preview-Image:</label>
+                <input type="text" className='col-span-2' name="previewImageUrl" value={workout.previewImageUrl || ''}/>
+                <button className='bg-green-800 col-span-2'>Save</button>
+                <button className='opacity-50'>Discard</button>
             </div>
         </form>
     )

@@ -47,3 +47,26 @@ h3 {
   font-size: theme('fontSize.xl');
   font-weight: bold;
 }
+
+input, select, textarea {
+  border: 1px solid var(--foreground);
+  border-radius: .5rem;
+  color: var(--foreground);
+  background-color: var(--background);
+  margin: 0.5rem 0;
+  padding: .25rem .75rem;
+}
+
+button {
+  border: 1px solid var(--foreground);
+  border-radius: .5rem;
+  background-color: var(--background);
+  padding: .75rem;
+  font-weight: bolder;
+  width: auto;
+  height: auto;
+}
+
+label {
+  text-align: right;
+}
