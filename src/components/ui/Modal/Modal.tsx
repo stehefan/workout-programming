@@ -1,17 +1,17 @@
 'use client';
 
 import {createPortal} from "react-dom";
-import {ElementRef, useEffect, useRef} from "react";
+import {ComponentRef, ReactNode, useEffect, useRef} from "react";
 import {useRouter} from "next/navigation";
 
 export type ModalProps = {
-    children: React.ReactNode;
+    children: ReactNode;
     showCloseButton?: boolean;
 }
 
 export default function Modal({children, showCloseButton = false}: ModalProps) {
     const router = useRouter();
-    const dialogRef = useRef<ElementRef<'dialog'>>(null);
+    const dialogRef = useRef<ComponentRef<'dialog'>>(null);
 
     useEffect(() => {
         if (!dialogRef.current?.open) {
