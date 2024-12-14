@@ -67,6 +67,11 @@ button {
   height: auto;
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 label {
   text-align: right;
 }
