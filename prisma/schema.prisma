@@ -65,6 +65,7 @@ model Image {
   description String
   imagePath   String
   createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
   userId      Int
   Exercise    Exercise[]
 }
