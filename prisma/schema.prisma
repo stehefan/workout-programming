@@ -20,16 +20,17 @@ model User {
 }
 
 model Exercise {
-  id              Int         @id @default(autoincrement())
-  exerciseName    String
-  measureUnit     MeasureUnit
-  measureCount    String
-  videoUrl        String?
-  previewImageUrl String?
-  note            String?
-  section         Section     @relation(fields: [sectionId], references: [id])
-  sectionId       Int
-  userId          Int
+  id           Int         @id @default(autoincrement())
+  exerciseName String
+  measureUnit  MeasureUnit
+  measureCount String
+  videoUrl     String?
+  note         String?
+  section      Section     @relation(fields: [sectionId], references: [id])
+  sectionId    Int
+  userId       Int
+  image        Image?      @relation(fields: [imageId], references: [id])
+  imageId      Int?
 }
 
 model Section {
@@ -56,4 +57,14 @@ model Program {
   name     String
   workouts Workout[]
   userId   Int
+}
+
+model Image {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String
+  imagePath   String
+  createdAt   DateTime   @default(now())
+  userId      Int
+  Exercise    Exercise[]
 }
