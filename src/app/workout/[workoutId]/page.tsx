@@ -29,7 +29,11 @@ export default async function Page({params}: { params: Params }) {
         include: {
             sections: {
                 include: {
-                    exercises: true
+                    exercises: {
+                        include: {
+                            image: true
+                        }
+                    }
                 }
             }
         },
