@@ -2,6 +2,7 @@ import React from 'react';
 import {ExerciseEntry, Section, Workout} from "@/types/Exercise";
 import Image from "next/image";
 import Link from "next/link";
+import {getFullImageUrl} from "@/app/utils";
 
 const NUMBER_OF_PREVIEW_IMAGES = 8;
 export type WorkoutPreviewProps = {
@@ -27,7 +28,7 @@ export default function WorkoutPreview(props: WorkoutPreviewProps) {
 
     const exercisesWithImages = props.workout.sections
         .flatMap((section: Section): ExerciseEntry[] => {
-            return section.exercises?.filter(exercise => exercise.previewImageUrl !== undefined) ?? [];
+            return section.exercises?.filter(exercise => exercise.image !== undefined) ?? [];
         });
 
     const exercises = topUpPreviewImages(exercisesWithImages)
@@ -35,7 +36,7 @@ export default function WorkoutPreview(props: WorkoutPreviewProps) {
             const width = 128;
             const height = Math.floor(width / 16 * 9);
             return <Image key={`${exercise.id}-${index}`}
-                          src={`https://wsrv.nl/?url=${exercise.previewImageUrl!}&w=${width}&h=${height}&dpr=2`}
+                          src={`https://wsrv.nl/?url=${getFullImageUrl(exercise.image!.imagePath)}&w=${width}&h=${height}&dpr=2`}
                           width={width}
                           height={height}
                           alt={exercise.exerciseName}
@@ -44,8 +45,7 @@ export default function WorkoutPreview(props: WorkoutPreviewProps) {
         .slice(0, NUMBER_OF_PREVIEW_IMAGES);
 
     return (
-
-        <Link href={`/workout/${props.workout.id}`} className='relative max-w-lg w-full rounded-2xl overflow-hidden'>
+        <Link href={`/workout/${props.workout.id}`} className='relative min-w-20 max-w-lg w-full  min-h-10 rounded-2xl overflow-hidden'>
             <div className='pointer-events-none select-none grid grid-cols-4 grid-rows-2'>{exercises}</div>
             <div
                 className='inline-flex text-2xl sm:text-4xl backdrop-blur-sm backdrop-grayscale text-white w-full h-full font-extrabold absolute top-0 left-0 justify-center items-center'>

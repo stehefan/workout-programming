@@ -70,3 +70,7 @@ export async function getUserForClerkUserId(clerkUserId: string) {
         }
     })
 }
+
+export function getFullImageUrl(url: string) {
+    return `https://${process.env.NEXT_PUBLIC_IMAGE_HOST}/${url}`;
+}

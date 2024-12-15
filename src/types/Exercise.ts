@@ -14,7 +14,7 @@ export type ExerciseEntry = IdentifiableObject & {
     measureUnit: MeasureUnitType;
     measureCount: string;
     videoUrl?: string;
-    previewImageUrl?: string;
+    image?: ExerciseImage;
     note?: string;
 };
 

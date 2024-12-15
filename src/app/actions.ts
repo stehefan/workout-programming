@@ -31,7 +31,7 @@ export async function updateExerciseEntry(previousExerciseEntry: ExerciseEntry, 
         measureUnit: z.nativeEnum(MeasureUnits),
         measureCount: z.string(),
         videoUrl: z.string().nullable(),
-        previewImageUrl: z.string().nullable(),
+        imageId: z.string().nullable(),
         note: z.string().nullable(),
     });
 
@@ -70,7 +70,7 @@ export async function updateExerciseEntry(previousExerciseEntry: ExerciseEntry, 
     return {
         ...newExerciseEntry,
         videoUrl: newExerciseEntry.videoUrl ?? undefined,
-        previewImageUrl: newExerciseEntry.previewImageUrl ?? undefined,
+        image: newExerciseEntry.imageId ?? undefined,
         note: newExerciseEntry.note ?? undefined,
     }
 }

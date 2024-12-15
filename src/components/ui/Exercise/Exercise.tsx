@@ -20,7 +20,7 @@ export default function Exercise(props: ExerciseProps) {
     const [isSaving, setIsSaving] = useState(false)
 
     const hasVideo = props.exercise.videoUrl !== undefined;
-    const hasPreviewImage = props.exercise.previewImageUrl !== undefined;
+    const hasPreviewImage = props.exercise.image !== undefined;
     const saveIndicatorIsEnabled = note !== props.exercise.note;
 
     const handleSave = async (formData: FormData) => {
@@ -54,7 +54,7 @@ export default function Exercise(props: ExerciseProps) {
             <div className={'relative rounded-t-lg'}>
                 {hasPreviewImage ? (
                     <Image
-                        src={`https://wsrv.nl/?url=${props.exercise.previewImageUrl!}&w=${width}&h=${height}&dpr=2`}
+                        src={`https://wsrv.nl/?url=${props.exercise.image!.path}&w=${width}&h=${height}&dpr=2`}
                         alt={'Woman holding dumbbell in white crew neck t-shirt'}
                         width={width}
                         height={height}
