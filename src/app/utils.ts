@@ -19,9 +19,9 @@ type PrismaExerciseOutput = {
     exerciseName: string;
     measureUnit: $Enums.MeasureUnit;
     measureCount: string;
-    image: PrismaImageOutput | null;
-    note: string | null;
-    videoUrl: string | null;
+    image?: PrismaImageOutput | null;
+    note?: string | null;
+    videoUrl?: string | null;
     sectionId: number
 };
 
