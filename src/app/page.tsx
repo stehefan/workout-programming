@@ -26,7 +26,11 @@ async function getProgramWithRelations() {
                     include: {
                         sections: {
                             include: {
-                                exercises: true
+                                exercises: {
+                                    include: {
+                                        image: true
+                                    }
+                                }
                             }
                         }
                     }
