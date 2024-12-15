@@ -3,7 +3,7 @@ interface ExerciseImage {
     title: string;
     description: string;
     imagePath: string;
-    createdAt: Date;
+    updatedAt: Date;
 }
 
 interface ImageResult {
