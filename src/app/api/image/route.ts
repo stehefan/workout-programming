@@ -1,35 +1,25 @@
-import {list, ListBlobResult} from "@vercel/blob";
-import {NextRequest} from "next/server";
+import {PrismaClient} from "@prisma/client";
+import {handleAuthentication} from "@/app/actions";
 
-const DEFAULT_LIMIT: number = 10;
+const prisma = new PrismaClient();
 
-function getLimit(searchParams: URLSearchParams) {
-    if (searchParams.has('limit')) {
-        return Number.parseInt(searchParams.get('limit')!);
-    }
-    return DEFAULT_LIMIT;
-}
-
-export async function GET(request: NextRequest) {
-    const searchParams = request.nextUrl.searchParams
-    const cursor = searchParams.get('cursor') ? decodeURIComponent(searchParams.get('cursor')!) : undefined;
-    const limit = getLimit(searchParams);
-
-    const blobResult: ListBlobResult = await list({
-        limit: limit,
-        cursor,
-        prefix: 'training/preview/',
+export async function GET() {
+    const appUser = (await handleAuthentication())!;
+    const images = await prisma.image.findMany({
+        where: {
+            userId: appUser.id,
+        }
     });
 
-    return Response.json({
-        images: blobResult.blobs
-            .filter(blob => blob.url.endsWith('png'))
-            .sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
-            .map(blob => ({
-                url: blob.url,
-                uploadedAt: blob.uploadedAt,
-            })),
-        cursor: blobResult.cursor,
-        hasMore: blobResult.hasMore,
-    })
+    const mappedImages: ExerciseImage[] = images.map(image => {
+        return {
+            id: image.id,
+            title: image.title,
+            description: image.description,
+            imageUrl: image.imageUrl,
+            updatedAt: image.updatedAt
+        }
+    });
+
+    return Response.json(mappedImages)
 }

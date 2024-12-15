@@ -5,10 +5,10 @@ import Image from "next/image";
 import VideoPlayer from "@/components/ui/VideoPlayer/VideoPlayer";
 import {ExerciseEntry} from "@/types/Exercise";
 import PreviewImagePlaceholder from "@/components/ui/Exercise/PreviewImagePlaceholder";
-import {updateNote} from "@/app/actions";
 import {ArrowPathIcon, CloudArrowDownIcon, PlayIcon} from "@heroicons/react/24/solid";
 import {PencilSquareIcon} from "@heroicons/react/16/solid";
 import Link from "next/link";
+import {updateNote} from "@/app/exercise/actions";
 
 export type ExerciseProps = {
     exercise: ExerciseEntry;
@@ -54,7 +54,7 @@ export default function Exercise(props: ExerciseProps) {
             <div className={'relative rounded-t-lg'}>
                 {hasPreviewImage ? (
                     <Image
-                        src={`https://wsrv.nl/?url=${props.exercise.image!.path}&w=${width}&h=${height}&dpr=2`}
+                        src={`https://wsrv.nl/?url=${props.exercise.image!.imageUrl}&w=${width}&h=${height}&dpr=2`}
                         alt={'Woman holding dumbbell in white crew neck t-shirt'}
                         width={width}
                         height={height}

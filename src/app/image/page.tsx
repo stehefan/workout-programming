@@ -1,46 +1,35 @@
-'use client';
+import ImageForm from "@/components/ui/ImageForm/ImageForm";
+import {insertImage} from "@/app/image/actions";
+import {PrismaClient} from "@prisma/client";
+import {handleAuthentication} from "@/app/actions";
+import {ImageDetail} from "@/components/ui/ImageDetail/ImageDetail";
 
-import {useEffect, useState} from "react";
-import {ArrowPathIcon} from "@heroicons/react/24/outline";
-import Image from 'next/image'
-import {getFullImageUrl} from "@/app/utils";
+const prisma = new PrismaClient();
 
-export default function ImagePage() {
-    const [images, setImages] = useState<ExerciseImage[]>([]);
-    const [cursor, setCursor] = useState<string | undefined>(undefined);
-    const [hasMore, setHasMore] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+export default async function ImagePage() {
+    const appUser = (await handleAuthentication())!
 
-    async function fetchImages() {
-        setIsLoading(true);
-        const imageResult: ImageResult = await fetch(`/api/image?cursor=${encodeURIComponent(cursor || '')}`)
-            .then((res) => res.json())
-        setImages(images.concat(imageResult.images));
-        setCursor(imageResult.cursor);
-        setHasMore(imageResult.hasMore);
-        setIsLoading(false);
+    const images = await prisma.image.findMany({
+        where: {
+            userId: appUser.id,
+        }
+    });
+
+    function ImageList() {
+        return <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>{
+            images && images.map((image => (
+                <ImageDetail image={image} key={`image-${image.id}`}/>
+            )))
+        }
+        </div>;
     }
-
-    useEffect(() => {
-        fetchImages()
-    }, [])
-
 
     return (
         <div className='flex flex-col items-center w-full'>
-            <div className='grid grid-cols-1 gap-4'>
-            {images && images.map(((blob, index) => (
-                <div key={`image-${index}`}>
-                    <Image src={getFullImageUrl(blob.imagePath)} alt='image' width={256} height={256 / 16 * 9} className='bg-opacity-50 bg-neutral-700'/>
-                    <span>{getFullImageUrl(blob.imagePath).substring("https://jzsirpofgtmehzlx.public.blob.vercel-storage.com/".length)}</span>
-                </div>
-            )))}
+            {images.length > 0 ? ImageList() : <span>No images - please add one</span>}
+            <div className='border-t w-full mt-4 mb-4 pt-4'>
+                <ImageForm action={insertImage}/>
             </div>
-            <button className='mt-2 inline-flex justify-center items-center' disabled={!hasMore} onClick={fetchImages}>
-                <ArrowPathIcon className={`size-5 mr-2 ${isLoading ? 'animate-spin' : ''}`}/>
-                load more
-            </button>
         </div>
     )
-
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import {ExerciseEntry, Section, Workout} from "@/types/Exercise";
 import Image from "next/image";
 import Link from "next/link";
-import {getFullImageUrl} from "@/app/utils";
 
 const NUMBER_OF_PREVIEW_IMAGES = 8;
 export type WorkoutPreviewProps = {
@@ -36,7 +35,7 @@ export default function WorkoutPreview(props: WorkoutPreviewProps) {
             const width = 128;
             const height = Math.floor(width / 16 * 9);
             return <Image key={`${exercise.id}-${index}`}
-                          src={`https://wsrv.nl/?url=${getFullImageUrl(exercise.image!.imagePath)}&w=${width}&h=${height}&dpr=2`}
+                          src={`https://wsrv.nl/?url=${exercise.image!.imageUrl}&w=${width}&h=${height}&dpr=2`}
                           width={width}
                           height={height}
                           alt={exercise.exerciseName}

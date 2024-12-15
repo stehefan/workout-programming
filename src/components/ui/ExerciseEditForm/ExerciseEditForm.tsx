@@ -2,9 +2,11 @@
 
 import {ExerciseEntry, MeasureUnits} from "@/types/Exercise";
 import {useActionState} from "react";
-import {updateExerciseEntry} from "@/app/actions";
 import {CancelButton} from "@/components/ui/CancelButton/CancelButton";
 import {SaveButton} from "@/components/ui/SaveButton/SaveButton";
+import Image from "next/image";
+import PreviewImagePlaceholder from "@/components/ui/Exercise/PreviewImagePlaceholder";
+import {updateExerciseEntry} from "@/app/exercise/actions";
 
 export type ExerciseEditFormProps = {
     workout: ExerciseEntry,
@@ -14,6 +16,10 @@ export type ExerciseEditFormProps = {
 export default function ExerciseEditForm({workout, cancelFn}: ExerciseEditFormProps) {
     const [state, update, actionIsPending] = useActionState<ExerciseEntry, FormData>(updateExerciseEntry, workout);
     const showCancelButton = cancelFn !== undefined;
+
+    const ImageElement = state.image
+        ? <Image src={state.image!.imageUrl} width={640} height={360} alt={state.image!.title}/>
+        : <PreviewImagePlaceholder/>;
 
     return (
         <div className={`w-full relative transition-opacity duration-300 ${actionIsPending && 'opacity-50'}`}>
@@ -37,9 +43,8 @@ export default function ExerciseEditForm({workout, cancelFn}: ExerciseEditFormPr
                     <input type="text" className='col-span-2' name="measureCount" defaultValue={state.measureCount}/>
                     <label className='text-lg mr-5' htmlFor="videoUrl">URL to the YouTube Video:</label>
                     <input type="text" className='col-span-2' name="videoUrl" defaultValue={state.videoUrl || ''}/>
-                    <label className='text-lg mr-5' htmlFor="previewImageUrl">URL to the Preview-Image:</label>
-                    <input type="text" className='col-span-2' name="previewImageUrl"
-                           defaultValue={state.previewImageUrl || ''}/>
+                    <label className='text-lg mr-5' htmlFor="previewImageUrl">Preview-Image:</label>
+                    {ImageElement}
                     <SaveButton submitFn={update} isSaving={actionIsPending}
                                 additionalClassNames={`${showCancelButton ? 'col-span-2' : 'col-start-2 col-span-1'}`}/>
                     {showCancelButton &&
