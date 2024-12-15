@@ -63,7 +63,7 @@ model Image {
   id          Int        @id @default(autoincrement())
   title       String
   description String
-  imagePath   String
+  imageUrl    String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @default(now())
   userId      Int
