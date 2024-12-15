@@ -1,13 +1,19 @@
 import React from 'react';
 
-export default function PreviewImagePlaceholder() {
+export type PreviewImagePlaceholderProps = {
+    width?: number | undefined;
+    height?: number | undefined;
+}
+
+export default function PreviewImagePlaceholder({width, height}: PreviewImagePlaceholderProps) {
     const strokeColor = 'var(--foreground)';
 
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 800 600"
-            className="w-full h-full"
+            width={width || '100%'}
+            height={height || '100%'}
         >
             <line
                 x1="150"
