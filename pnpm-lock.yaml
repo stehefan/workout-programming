@@ -27,8 +27,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(prisma@6.0.1)
       '@stylistic/eslint-plugin':
-        specifier: ^2.12.0
-        version: 2.12.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
+        specifier: ^2.12.1
+        version: 2.12.1(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
       '@vercel/blob':
         specifier: ^0.27.0
         version: 0.27.0
@@ -529,8 +529,8 @@ packages:
   '@rushstack/eslint-patch@1.10.4':
     resolution: {integrity: sha512-WJgX9nzTqknM393q1QJDJmoW28kUfEnybeTfVNcNAPnIx210RXm2DiXiHzfNPJNIUUb1tJnz/l4QGtJ30PgWmA==}
 
-  '@stylistic/eslint-plugin@2.12.0':
-    resolution: {integrity: sha512-IvD2WXbOoSp0zNpyYbjdSyEjZtut78RYfj2WIlbChE7HFuposTK5X1hc5+4AyqYcjLXYdD5oo/sJtqMGFNRb1w==}
+  '@stylistic/eslint-plugin@2.12.1':
+    resolution: {integrity: sha512-fubZKIHSPuo07FgRTn6S4Nl0uXPRPYVNpyZzIDGfp7Fny6JjNus6kReLD7NI380JXi4HtUTSOZ34LBuNPO1XLQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -2700,7 +2700,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.4': {}
 
-  '@stylistic/eslint-plugin@2.12.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)':
+  '@stylistic/eslint-plugin@2.12.1(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)':
     dependencies:
       '@typescript-eslint/utils': 8.17.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
       eslint: 9.16.0(jiti@1.21.6)
