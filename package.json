@@ -17,8 +17,8 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.9.9",
-    "@clerk/themes": "^2.2.12",
+    "@clerk/nextjs": "^6.10.3",
+    "@clerk/themes": "^2.2.13",
     "@commitlint/types": "^19.5.0",
     "@eslint/compat": "^1.2.5",
     "@heroicons/react": "^2.2.0",
@@ -26,12 +26,12 @@
     "@stylistic/eslint-plugin": "^2.13.0",
     "@vercel/blob": "^0.27.1",
     "cookie": "^1.0.2",
-    "next": "^15.1.4",
+    "next": "^15.1.6",
     "prisma": "^6.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-player": "^2.16.0",
-    "typescript-eslint": "^8.20.0",
+    "typescript-eslint": "^8.22.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "eslint": "^9.18.0",
+    "eslint": "^9.19.0",
     "eslint-config-next": "^15.1.6",
     "husky": "^9.1.7",
     "postcss": "^8.5.1",
