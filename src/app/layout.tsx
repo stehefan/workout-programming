@@ -18,7 +18,7 @@ export default function RootLayout({modal, children}: { modal: React.ReactNode, 
             <html lang="en">
             <body className='flex flex-col items-center h-dvh'>
             <nav className='flex w-full justify-center dark:bg-neutral-800 bg-neutral-200'>
-                <div className='flex justify-between content-center max-w-screen-lg w-full p-4'>
+                <div className='flex justify-between content-center max-w-(--breakpoint-lg) w-full p-4'>
                     <Link href='/' className='text-lg font-bold text-amber-500'>Hardly Working Out</Link>
                     <SignedIn>
                         <UserButton/>
@@ -28,7 +28,7 @@ export default function RootLayout({modal, children}: { modal: React.ReactNode, 
                     </SignedOut>
                 </div>
             </nav>
-            <main className='w-full max-w-screen-lg p-4 h-full'>
+            <main className='w-full max-w-(--breakpoint-lg) p-4 h-full'>
                 {children}
             </main>
             {modal}

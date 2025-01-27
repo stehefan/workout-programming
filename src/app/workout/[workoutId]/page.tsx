@@ -59,7 +59,7 @@ export default async function Page({params}: { params: Params }) {
                     <div className='text-base font-thin pb-2'>
                         {section.roundCount} Round{section.roundCount > 1 ? 's' : ''}
                     </div>
-                    <div className='grid grid-cols-[repeat(auto-fill,_minmax(20rem,_1fr))] justify-items-center gap-4'>
+                    <div className='grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] justify-items-center gap-4'>
                         {section.exercises.sort(sortByIdASC).map(exercise => (
                             <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)}/>
                         ))}
