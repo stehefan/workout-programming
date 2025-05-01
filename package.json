@@ -20,7 +20,7 @@
     "@clerk/nextjs": "^6.12.12",
     "@clerk/themes": "^2.2.20",
     "@commitlint/types": "^19.5.0",
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^1.2.8",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "6.5.0",
     "@stylistic/eslint-plugin": "^4.2.0",
