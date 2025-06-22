@@ -5,14 +5,10 @@ import ExerciseEditForm from "@/components/ui/ExerciseEditForm/ExerciseEditForm"
 import { ExerciseEntry } from "@/types/Exercise";
 import prisma from "@/lib/prisma";
 
-type ExercisePageProps = {
-    params: {
-        exerciseId: string
-    }
-}
+type PageParams = Promise<{ exerciseId: string }>;
 
-export default async function ExercisePage({ params }: ExercisePageProps) {
-    const { exerciseId } = params;
+export default async function Page({ params }: { params: PageParams }) {
+    const { exerciseId } = await params;
 
     if (Number.isNaN(Number.parseInt(exerciseId))) {
         return notFound();
