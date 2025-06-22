@@ -1,15 +1,13 @@
-import {PrismaClient} from "@prisma/client";
-import {notFound} from "next/navigation";
+import { notFound } from "next/navigation";
 import Exercise from "@/components/ui/Exercise/Exercise";
-import {AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC} from "@/app/utils";
-import {auth} from "@clerk/nextjs/server";
-
-const prisma = new PrismaClient()
+import { AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC } from "@/app/utils";
+import { auth } from "@clerk/nextjs/server";
+import prisma from "@/lib/prisma";
 
 type Params = Promise<{ workoutId: string }>;
 
-export default async function Page({params}: { params: Params }) {
-    const {workoutId} = await params;
+export default async function Page({ params }: { params: Params }) {
+    const { workoutId } = await params;
 
     if (Number.isNaN(workoutId)) {
         return notFound();
@@ -61,7 +59,7 @@ export default async function Page({params}: { params: Params }) {
                     </div>
                     <div className='grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] justify-items-center gap-4'>
                         {section.exercises.sort(sortByIdASC).map(exercise => (
-                            <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)}/>
+                            <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)} />
                         ))}
                     </div>
                 </div>

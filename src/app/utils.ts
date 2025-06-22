@@ -1,7 +1,6 @@
-import {ExerciseEntry, IdentifiableObject, Section, Workout} from "@/types/Exercise";
-import {$Enums, Prisma, PrismaClient} from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { ExerciseEntry, IdentifiableObject, Section, Workout } from "@/types/Exercise";
+import { $Enums, Prisma } from "@prisma/client";
+import prisma from "@/lib/prisma";
 
 export function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
     return a.id - b.id;
@@ -81,6 +80,6 @@ export async function getUserForClerkUserId(clerkUserId: string) {
     })
 }
 
-export function getPreviewImageBasePath(): string  {
+export function getPreviewImageBasePath(): string {
     return process.env.NEXT_PUBLIC_IMAGE_BASE_PATH || 'training/preview'
 };

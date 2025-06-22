@@ -1,14 +1,12 @@
 'use server';
 
-import {ExclamationCircleIcon} from "@heroicons/react/24/solid";
-import {Prisma, PrismaClient} from "@prisma/client";
-import {ExerciseProgram} from "@/types/Exercise";
+import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
+import { Prisma } from "@prisma/client";
+import { ExerciseProgram } from "@/types/Exercise";
 import WorkoutPreview from "@/components/ui/WorkoutPreview/WorkoutPreview";
-import {AppUser, getUserForClerkUserId, mapToDomainWorkout} from "@/app/utils";
-import {currentUser} from "@clerk/nextjs/server";
-
-const prisma = new PrismaClient();
-
+import { AppUser, getUserForClerkUserId, mapToDomainWorkout } from "@/app/utils";
+import { currentUser } from "@clerk/nextjs/server";
+import prisma from "@/lib/prisma";
 
 async function getProgramWithRelations() {
 
@@ -63,7 +61,7 @@ export default async function Home() {
     if (!program) {
         return (
             <div className={'h-full flex justify-center gap-2 pt-10 pb-10'}>
-                <ExclamationCircleIcon className='h-12 fill-red-200'/>
+                <ExclamationCircleIcon className='h-12 fill-red-200' />
                 <span className='text-red-200 text-5xl font-bold'>No program found</span>
             </div>
         )
@@ -74,7 +72,7 @@ export default async function Home() {
             <span className='text-4xl w-full pb-4'>{program.name}</span>
             <div className='grid grid-cols-2 max-md:grid-cols-1 gap-4'>
                 {program.workouts && program.workouts.map(workout => (
-                    <WorkoutPreview workout={workout} key={workout.id}/>
+                    <WorkoutPreview workout={workout} key={workout.id} />
                 ))}
             </div>
         </div>

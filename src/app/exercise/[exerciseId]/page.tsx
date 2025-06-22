@@ -1,21 +1,20 @@
-import {notFound} from "next/navigation";
-import {auth} from "@clerk/nextjs/server";
-import {AppUser, getUserForClerkUserId} from "@/app/utils";
+import { notFound } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
+import { AppUser, getUserForClerkUserId } from "@/app/utils";
 import ExerciseEditForm from "@/components/ui/ExerciseEditForm/ExerciseEditForm";
-import {ExerciseEntry} from "@/types/Exercise";
-import {PrismaClient} from "@prisma/client";
+import { ExerciseEntry } from "@/types/Exercise";
+import prisma from "@/lib/prisma";
 
 type ExercisePageParams = Promise<{ exerciseId: string }>;
-const prisma = new PrismaClient();
 
-export default async function ExercisePage({params}: { params: ExercisePageParams }) {
-    const {exerciseId} = await params;
+export default async function ExercisePage({ params }: { params: ExercisePageParams }) {
+    const { exerciseId } = await params;
 
     if (Number.isNaN(exerciseId)) {
         return notFound();
     }
 
-    const {userId} = await auth();
+    const { userId } = await auth();
     const appUser: AppUser | undefined = await getUserForClerkUserId(userId!);
 
     if (!appUser) {
@@ -35,7 +34,7 @@ export default async function ExercisePage({params}: { params: ExercisePageParam
 
     return (
         <div className='flex items-center max-w-3xl min-w-2xl'>
-            <ExerciseEditForm workout={workout as ExerciseEntry}/>
+            <ExerciseEditForm workout={workout as ExerciseEntry} />
         </div>
     )
 }
