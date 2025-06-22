@@ -1,10 +1,6 @@
-import { ExerciseEntry, IdentifiableObject, Section, Workout } from "@/types/Exercise";
+import { ExerciseEntry, Section, Workout } from "@/types/Exercise";
 import { $Enums, Prisma } from "@prisma/client";
 import prisma from "@/lib/prisma";
-
-export function sortByIdASC(a: IdentifiableObject, b: IdentifiableObject): number {
-    return a.id - b.id;
-}
 
 /*
  * Mapper functions that infer their types from the uses context; Prisma does not automatically create types for those

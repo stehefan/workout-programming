@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Exercise from "@/components/ui/Exercise/Exercise";
-import { AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC } from "@/app/utils";
+import { AppUser, getUserForClerkUserId, mapToDomainExercise } from "@/app/utils";
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
 
@@ -30,8 +30,14 @@ export default async function Page({ params }: PageProps) {
     const workout = await prisma.workout.findFirst({
         include: {
             sections: {
+                orderBy: {
+                    id: 'asc'
+                },
                 include: {
                     exercises: {
+                        orderBy: {
+                            id: 'asc'
+                        },
                         include: {
                             image: true
                         }
@@ -55,14 +61,14 @@ export default async function Page({ params }: PageProps) {
     return (
         <section>
             <span className='text-4xl'>{workout.name}</span>
-            {workout.sections.sort(sortByIdASC).map((section, sectionIndex) => (
-                <div key={sectionIndex}>
+            {workout.sections.map((section) => (
+                <div key={section.id}>
                     <h3 className='pt-4'>{section.name}</h3>
                     <div className='text-base font-thin pb-2'>
                         {section.roundCount} Round{section.roundCount > 1 ? 's' : ''}
                     </div>
                     <div className='grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] justify-items-center gap-4'>
-                        {section.exercises.sort(sortByIdASC).map(exercise => (
+                        {section.exercises.map(exercise => (
                             <Exercise key={exercise.id} exercise={mapToDomainExercise(exercise)} />
                         ))}
                     </div>
