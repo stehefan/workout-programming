@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import { AppUser, getUserForClerkUserId } from "@/app/utils";
+import { AppUser, getUserForClerkUserId, mapToDomainExercise } from "@/app/utils";
 import ExerciseEditForm from "@/components/ui/ExerciseEditForm/ExerciseEditForm";
 import { ExerciseEntry } from "@/types/Exercise";
 import prisma from "@/lib/prisma";
@@ -25,20 +25,23 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
         throw new Error('You need to be logged in and have a clerk user assigned to you');
     }
 
-    const workout = await prisma.exercise.findFirst({
+    const exercise = await prisma.exercise.findFirst({
         where: {
             id: Number.parseInt(exerciseId),
             userId: appUser.id,
+        },
+        include: {
+            image: true
         }
     });
 
-    if (!workout) {
+    if (!exercise) {
         return notFound()
     }
 
     return (
         <div className='flex items-center max-w-3xl min-w-2xl'>
-            <ExerciseEditForm workout={workout as ExerciseEntry} />
+            <ExerciseEditForm workout={mapToDomainExercise(exercise)} />
         </div>
     )
 }
