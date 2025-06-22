@@ -4,12 +4,16 @@ import { AppUser, getUserForClerkUserId, mapToDomainExercise, sortByIdASC } from
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
 
-type Params = Promise<{ workoutId: string }>;
+type PageProps = {
+    params: {
+        workoutId: string
+    }
+}
 
-export default async function Page({ params }: { params: Params }) {
-    const { workoutId } = await params;
+export default async function Page({ params }: PageProps) {
+    const { workoutId } = params;
 
-    if (Number.isNaN(workoutId)) {
+    if (Number.isNaN(Number.parseInt(workoutId))) {
         return notFound();
     }
 
