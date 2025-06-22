@@ -17,6 +17,11 @@ enum MeasureUnit {
 model User {
   id          Int    @id @default(autoincrement())
   clerkUserId String @unique
+  programs    Program[]
+  workouts    Workout[]
+  sections    Section[]
+  exercises   Exercise[]
+  images      Image[]
 }
 
 model Exercise {
@@ -26,10 +31,11 @@ model Exercise {
   measureCount String
   videoUrl     String?
   note         String?
-  section      Section     @relation(fields: [sectionId], references: [id])
+  section      Section     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   sectionId    Int
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       Int
-  image        Image?      @relation(fields: [imageId], references: [id])
+  image        Image?      @relation(fields: [imageId], references: [id], onDelete: SetNull)
   imageId      Int?
 }
 
@@ -38,8 +44,9 @@ model Section {
   name       String
   roundCount Int
   exercises  Exercise[]
-  workout    Workout    @relation(fields: [workoutId], references: [id])
+  workout    Workout    @relation(fields: [workoutId], references: [id], onDelete: Cascade)
   workoutId  Int
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     Int
 }
 
@@ -47,8 +54,9 @@ model Workout {
   id        Int       @id @default(autoincrement())
   name      String
   sections  Section[]
-  program   Program   @relation(fields: [programId], references: [id])
+  program   Program   @relation(fields: [programId], references: [id], onDelete: Cascade)
   programId Int
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
 }
 
@@ -56,6 +64,7 @@ model Program {
   id       Int       @id @default(autoincrement())
   name     String
   workouts Workout[]
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId   Int
 }
 
@@ -65,7 +74,8 @@ model Image {
   description String
   imageUrl    String
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
   Exercise    Exercise[]
 }
