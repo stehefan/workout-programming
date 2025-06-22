@@ -72,7 +72,7 @@ model Image {
   id          Int        @id @default(autoincrement())
   title       String
   description String
-  imageUrl    String
+  imageUrl    String     @unique
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
