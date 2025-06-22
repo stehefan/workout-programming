@@ -1,9 +1,9 @@
-import {auth} from "@clerk/nextjs/server";
-import {ActionError, ActionErrorType} from "@/types/Error";
-import {AppUser, getUserForClerkUserId} from "@/app/utils";
+import { auth } from "@clerk/nextjs/server";
+import { ActionError, ActionErrorType } from "@/types/Error";
+import { AppUser, getUserForClerkUserId } from "@/app/utils";
 
 export async function handleAuthentication(): Promise<AppUser> {
-    const {userId} = await auth();
+    const { userId } = await auth();
     if (!userId) {
         throw new ActionError(ActionErrorType.AuthenticationError, 'You must be signed in to update notes');
     }
@@ -13,5 +13,5 @@ export async function handleAuthentication(): Promise<AppUser> {
         throw new ActionError(ActionErrorType.AuthenticationError, 'You need to be logged in and have a clerk user assigned to you');
     }
 
-    return appUser!;
+    return appUser;
 }

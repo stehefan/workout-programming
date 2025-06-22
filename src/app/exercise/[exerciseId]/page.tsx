@@ -19,7 +19,10 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
     }
 
     const { userId } = await auth();
-    const appUser: AppUser | undefined = await getUserForClerkUserId(userId!);
+    if (!userId) {
+        throw new Error('You must be signed in to view this page');
+    }
+    const appUser: AppUser | undefined = await getUserForClerkUserId(userId);
 
     if (!appUser) {
         throw new Error('You need to be logged in and have a clerk user assigned to you');

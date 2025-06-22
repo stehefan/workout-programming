@@ -10,7 +10,10 @@ import prisma from "@/lib/prisma";
 
 async function getProgramWithRelations() {
 
-    const clerkUser = (await currentUser())!;
+    const clerkUser = await currentUser();
+    if (!clerkUser) {
+        throw new Error("You need to be logged in to fetch a program")
+    }
     const appUser: AppUser = await getUserForClerkUserId(clerkUser.id);
 
     if (!appUser) {
@@ -50,9 +53,9 @@ export default async function Home() {
     const programWithRelations: ProgramWithRelations = await getProgramWithRelations();
 
     const program: ExerciseProgram | null = programWithRelations ? {
-        id: programWithRelations!.id,
-        name: programWithRelations!.name,
-        workouts: programWithRelations!.workouts.map(workout => {
+        id: programWithRelations.id,
+        name: programWithRelations.name,
+        workouts: programWithRelations.workouts.map(workout => {
             return mapToDomainWorkout(workout);
         })
     } : null

@@ -19,8 +19,6 @@ export default function Exercise({ exercise }: ExerciseProps) {
     const [note, setNote] = useState(exercise.note);
     const [isSaving, setIsSaving] = useState(false)
 
-    const hasVideo = exercise.videoUrl !== undefined;
-    const hasPreviewImage = exercise.image !== undefined;
     const saveIndicatorIsEnabled = note !== exercise.note;
 
     const handleSave = async (formData: FormData) => {
@@ -54,9 +52,9 @@ export default function Exercise({ exercise }: ExerciseProps) {
                 <span className="sr-only">Edit item</span>
             </Link>
             <div className='relative rounded-t-lg'>
-                {hasPreviewImage ? (
+                {exercise.image ? (
                     <Image
-                        src={`https://wsrv.nl/?url=${exercise.image!.imageUrl}&w=${width}&h=${height}&dpr=2`}
+                        src={`https://wsrv.nl/?url=${exercise.image.imageUrl}&w=${width}&h=${height}&dpr=2`}
                         alt={'Woman holding dumbbell in white crew neck t-shirt'}
                         width={width}
                         height={height}
@@ -66,7 +64,7 @@ export default function Exercise({ exercise }: ExerciseProps) {
                         <PreviewImagePlaceholder />
                     </div>
                 )}
-                {hasVideo && (
+                {exercise.videoUrl && (
                     <button
                         title={playVideoTitle}
                         aria-label={playVideoTitle}
@@ -110,9 +108,9 @@ export default function Exercise({ exercise }: ExerciseProps) {
                 </form>
             </div>
             {
-                displayVideoPlayer && hasVideo && (
+                displayVideoPlayer && exercise.videoUrl && (
                     <VideoPlayer
-                        videoUrl={exercise.videoUrl!}
+                        videoUrl={exercise.videoUrl}
                         closeFn={() => setDisplayVideoPlayer(false)}
                     />
                 )}
